@@ -4,16 +4,19 @@ author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
 date: 2017
 theme: Dresden
+header-includes:
+    - \renewcommand{\figurename}{Gambar}
 ---
 
 # Critical Section
 
 ## Critical Section
 
-> A critical section is a section of code that can be executed by at most one process at a time.
+> A **critical section** is a section of code that can be executed by at most **one process at a time**.
 > The critical section exists to protect shared resources from multiple access.[^critsec]
 
 - contoh: mengubah variabel global, menulis ke *file*, dll.
+- solusi: sinkronisasi
 
 [^critsec]: Jones (2008), *GNU/Linux Application Programming*, hlm 264.
 
@@ -21,10 +24,12 @@ theme: Dresden
 ## Sinkronisasi
 
 - untuk melindungi (mengunci) sebuah *critical section*
-    - hanya satu proses dalam satu waktu yang dapat masuk
+    - hanya satu proses/*thread* dalam satu waktu yang dapat masuk
 - menggunakan *mutex lock* atau *semaphore*
 
+---
 
+![*Don't share mutable state*](img/dont-share-mutable-state.png)
 
 
 # Mutual Exclusion
@@ -101,7 +106,6 @@ int main()
     return 0;
 }
 ~~~
-
 
 # Semaphore
 

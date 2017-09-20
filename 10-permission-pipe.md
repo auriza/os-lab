@@ -2,8 +2,10 @@
 title: Permission, Link, Pipe, Redirection
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2016
+date: 2017
 theme: Dresden
+header-includes:
+    - \renewcommand{\figurename}{Gambar}
 ---
 
 
@@ -31,6 +33,9 @@ theme: Dresden
     - *group owner* (`g`)
     - *others* (`o`)
 
+---
+
+![UNIX permissions](img/permissions.png)
 
 ## `su`
 Berubah menjadi *user* lain atau menjadi *superuser*.
@@ -46,6 +51,10 @@ Mengubah kepemilikan suatu *file*.
 chown [OPTION] [OWNER][:GROUP] FILE
 ```
 - `-R`: rekursif
+
+---
+
+![Membuka akses untuk publik](img/chown-chmod.png)
 
 ## `chmod`
 Mengganti mode *permission* suatu *file*.
@@ -76,7 +85,6 @@ chmod [OPTION] OCTAL-MODE FILE...
     - `chmod a=rx,u+w FILE`
     - `chmod 755 FILE`
 
-
 ## Link
 
 1. *Hard link*
@@ -88,6 +96,14 @@ chmod [OPTION] OCTAL-MODE FILE...
     - bisa lintas partisi
     - bisa membuat *link* ke direktori
     - namun jika nama *file* yang dirujuk berubah akan mengakibatkan *broken link*
+
+---
+
+![Inode](img/inodes.png)
+
+---
+
+![Direktori dan symlink](img/directories.png)
 
 ## `ln`
 Membuat *link* antar-*file*.
@@ -118,10 +134,14 @@ stdin  +-----> |   PROSES   | ------>  stdout
 
 ```
 
+---
+
+![File descriptor](img/file-descriptors.png)
+
 
 ## *Pipe*
 
-- Menyalurkan *output* suatu proses menjadi *input* proses selanjutnya
+- Menyalurkan *output* proses menjadi *input* proses selanjutnya
 - Berguna untuk membuat *pipeline* perintah
 
 ```
@@ -138,6 +158,9 @@ stdin  +-----> |   PROSES   | ------>  stdout
     - `echo "2 + 5" | bc`
     - `who | wc -l`
 
+---
+
+![Pipe](img/pipes.png)
 
 ## *Redirect*
 

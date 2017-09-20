@@ -224,7 +224,7 @@ int main()
     - coba jalankan beberapa perintah memakai fungsi tsb
 
 - Kumpulkan di LMS berupa satu *file* dengan nama `[NIM].c`.
-    - **opsional**, plagiasi akan mendapat sanksi nilai -100
+    - **opsional**, plagiasi akan mendapat sanksi nilai $-100$
     - paling lambat besok pukul 06:00
 
 [^system]: lihat `man 3 system`.

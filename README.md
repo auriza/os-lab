@@ -12,10 +12,10 @@
 
 ## Administrasi Sistem UNIX
 
-8. [Perintah dasar](08-intro.md)
-9. [File](09-file.md), [permission, link, pipe, redirection](09-permission-pipe.md)
-10. [Pemrosesan teks](10-text-process.md)
-11. [Job control](11-job-control.md)
+8. [Perintah dasar](08-intro-cli.md)
+9. [File](09-file.md), [permission, link, pipe, redirection](10-permission-pipe.md)
+10. [Pemrosesan teks](11-text-process.md)
+11. [Job control](12-job-control.md)
 12. UASP
 13. [Shell script](13-shell-script.md)
 14. [Lain-lain](14-misc.md)

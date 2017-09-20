@@ -2,7 +2,7 @@
 title: UNIX Intro
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2016
+date: 2017
 theme: Dresden
 ---
 
@@ -20,28 +20,28 @@ theme: Dresden
 
 ## Server SO
 
-<!--
-- Raspberry Pi 2 Model B[^rpi2]
-    - 900 MHz quad-core ARM CPU
+- Raspberry Pi 3 Model B[^rpi3]
+    - 1.2 GHz quad-core ARMv8 CPU
     - 1 GiB RAM
--->
-
+- Raspbian Lite GNU/Linux
+<!--
 - Raspberry Pi 1 Model B[^rpi1]
     - 700 MHz *single-core* ARMv6 CPU
     - 512 MiB RAM
-- Raspbian GNU/Linux 8
+-->
 
 [^rpi1]: <https://www.raspberrypi.org/products/model-b/>
 [^rpi2]: <https://www.raspberrypi.org/products/raspberry-pi-2-model-b/>
+[^rpi3]: <https://www.raspberrypi.org/products/raspberry-pi-3-model-b/>
 
 ---
 
-![Raspberry Pi](img/rpi1-server.jpg){width=80%}
+![Raspberry Pi](img/rpi2-server.jpg){width=80%}
 
 
 ## Login Server
 
-- *Host*: `172.20.35.100`
+- *Host*: `os.apps.cs.ipb.ac.id`
 - *Username*: lihat LMS
     <!-- - pola: `^[a-z][-a-z0-9_]{0,7}` -->
 - *Password*: 6 digit terakhir NIM

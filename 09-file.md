@@ -2,7 +2,7 @@
 title: File dan Direktori
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2016
+date: 2017
 theme: Dresden
 ---
 
@@ -113,10 +113,9 @@ direktori *root*, yaitu direktori paling atas
 - masuk ke direktori *home* anda
 - buat direktori `public_html`
 - masuk ke direktori tersebut
-- unduh templat resume di "<https://git.io/v92wK>" ke sini
+- unduh templat resume berikut ke sini
+    - <https://raw.githubusercontent.com/auriza/os-lab/master/txt/bio.html>
 - ubah nama *file* menjadi `resume.html`
 - edit *file* sesuai dengan data anda
-- untuk melihat tampilannya, buka halaman web "<http://172.20.35.100/~$USER/resume.html>"
-
-<!-- - salin *file* `/home/auriza/public_html/bio.html` ke sini
-- untuk melihat hasilnya, buka halaman web <http://os.apps.cs.ipb.ac.id/~$USER/bio.html> -->
+- untuk melihat hasilnya, buka halaman web berikut
+    - <http://os.apps.cs.ipb.ac.id/~username/resume.html>
