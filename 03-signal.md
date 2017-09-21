@@ -12,13 +12,13 @@ header-includes:
 
 - Bentuk komunikasi antarproses (IPC) yang paling sederhana.
 
-- Contoh IPC yang lain[^ipc]:
+- Contoh IPC yang lain[^03-ipc]:
     - *pipe*
     - *socket*
     - *shared memory*
     - *message passing*
 
-[^ipc]: Silberschatz *et al.* (2013), *Operating System Concepts*, hlm 130--147.
+[^03-ipc]: Silberschatz *et al.* (2013), *Operating System Concepts*, hlm 130--147.
 
 ---
 
@@ -26,14 +26,14 @@ header-includes:
 
 ## Jenis sinyal
 
-- Ada 31 jenis sinyal standar[^signum].
+- Ada 31 jenis sinyal standar[^03-signum].
 
 - Beberapa sinyal dapat dikirim langsung oleh *user* ke proses *foreground* dengan menekan kombinasi tombol berikut:
     - `Ctrl-C`: sinyal *interrupt* (`SIGINT`)
     - `Ctrl-Z`: sinyal *terminal stop* (`SIGTSTP`)
     - `Ctrl-\`: sinyal *quit* (`SIGQUIT`)
 
-[^signum]: lihat *file* `/usr/include/bits/signum.h` dan `man 7 signal`.
+[^03-signum]: lihat *file* `/usr/include/bits/signum.h` dan `man 7 signal`.
 
 ---
 
@@ -87,11 +87,11 @@ header-includes:
 
 `void signal(int signum, void function(int));`{.c}
 
-- Untuk menangani sinyal yang masuk[^signal].
+- Untuk menangani sinyal yang masuk[^03-signal].
 
 - Jika ada `signum` yang masuk, maka `function` akan dijalankan.
 
-[^signal]: lihat `man 2 signal`.
+[^03-signal]: lihat `man 2 signal`.
 
 
 ## Contoh
@@ -130,9 +130,9 @@ int main() {
 
 `int kill(pid_t pid, int signum);`{.c}
 
-- Untuk mengirim sinyal `signum` ke proses `pid`[^kill].
+- Untuk mengirim sinyal `signum` ke proses `pid`[^03-kill].
 
-[^kill]: lihat `man 2 kill`.
+[^03-kill]: lihat `man 2 kill`.
 
 ## Contoh
 
@@ -170,9 +170,9 @@ int main()
 
 `int pause(void);`{.c}
 
-- Untuk menunggu sinyal masuk[^pause].
+- Untuk menunggu sinyal masuk[^03-pause].
 
-[^pause]: lihat `'man 2 pause'`.
+[^03-pause]: lihat `'man 2 pause'`.
 
 ## Contoh
 
@@ -219,7 +219,7 @@ int main()
 
 ## Tugas Bonus
 
-- Implementasikan sendiri fungsi `system()` anda sesuai penjelasan yang tertera pada manual[^system].
+- Implementasikan sendiri fungsi `system()` anda sesuai penjelasan yang tertera pada manual[^03-system].
     - gunakan fungsi `fork()`, `execl()`, `wait()`, dan `signal()`
     - coba jalankan beberapa perintah memakai fungsi tsb
 
@@ -227,4 +227,4 @@ int main()
     - **opsional**, plagiasi akan mendapat sanksi nilai $-100$
     - paling lambat besok pukul 06:00
 
-[^system]: lihat `man 3 system`.
+[^03-system]: lihat `man 3 system`.

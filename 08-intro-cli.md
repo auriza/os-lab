@@ -20,19 +20,19 @@ theme: Dresden
 
 ## Server SO
 
-- Raspberry Pi 3 Model B[^rpi3]
+- Raspberry Pi 3 Model B[^08-rpi3]
     - 1.2 GHz quad-core ARMv8 CPU
     - 1 GiB RAM
 - Raspbian Lite GNU/Linux
 <!--
-- Raspberry Pi 1 Model B[^rpi1]
+- Raspberry Pi 1 Model B[^08-rpi1]
     - 700 MHz *single-core* ARMv6 CPU
     - 512 MiB RAM
 -->
 
-[^rpi1]: <https://www.raspberrypi.org/products/model-b/>
-[^rpi2]: <https://www.raspberrypi.org/products/raspberry-pi-2-model-b/>
-[^rpi3]: <https://www.raspberrypi.org/products/raspberry-pi-3-model-b/>
+[^08-rpi1]: <https://www.raspberrypi.org/products/model-b/>
+[^08-rpi2]: <https://www.raspberrypi.org/products/raspberry-pi-2-model-b/>
+[^08-rpi3]: <https://www.raspberrypi.org/products/raspberry-pi-3-model-b/>
 
 ---
 
@@ -48,13 +48,13 @@ theme: Dresden
 
 ## Sumber Tambahan
 
-- UNIX commands list[^cmd]
-- Explain Shell[^esh]
-- Regular expression checker[^rgx]
+- UNIX commands list[^08-cmd]
+- Explain Shell[^08-esh]
+- Regular expression checker[^08-rgx]
 
-[^cmd]: <https://en.wikipedia.org/wiki/Template:Unix_commands>
-[^esh]: <http://explainshell.com>
-[^rgx]: <http://regexr.com/>
+[^08-cmd]: <https://en.wikipedia.org/wiki/Template:Unix_commands>
+[^08-esh]: <http://explainshell.com>
+[^08-rgx]: <http://regexr.com/>
 
 
 # Perintah Dasar

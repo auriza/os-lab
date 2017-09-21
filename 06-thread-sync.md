@@ -13,12 +13,12 @@ header-includes:
 ## Critical Section
 
 > A **critical section** is a section of code that can be executed by at most **one process at a time**.
-> The critical section exists to protect shared resources from multiple access.[^critsec]
+> The critical section exists to protect shared resources from multiple access.[^06-critsec]
 
 - contoh: mengubah variabel global, menulis ke *file*, dll.
 - solusi: sinkronisasi
 
-[^critsec]: Jones (2008), *GNU/Linux Application Programming*, hlm 264.
+[^06-critsec]: Jones (2008), *GNU/Linux Application Programming*, hlm 264.
 
 
 ## Sinkronisasi
@@ -38,9 +38,9 @@ header-includes:
 
 > Mutex is a key to a variable.
 > One thread can have the key---modify the variable---at the time.
-> When finished, the thread gives (frees) the key to the next thread in the group.[^mutex]
+> When finished, the thread gives (frees) the key to the next thread in the group.[^06-mutex]
 
-[^mutex]: <http://koti.mbnet.fi/niclasw/MutexSemaphore.html>
+[^06-mutex]: <http://koti.mbnet.fi/niclasw/MutexSemaphore.html>
 
 
 ## Fungsi Mutex
@@ -112,7 +112,7 @@ int main()
 ## Semaphore
 
 - nilai *semaphore* `S` diinisialisasi dengan bilangan non-negatif
-- terdapat dua operasi atomik yang bisa dilakukan pada *semaphore*, yaitu `wait` dan `post`[^sem]
+- terdapat dua operasi atomik yang bisa dilakukan pada *semaphore*, yaitu `wait` dan `post`[^06-sem]
 
     ~~~c
     wait(S) {
@@ -125,7 +125,7 @@ int main()
     }
     ~~~
 
-[^sem]: Silberschatz *et al.* (2013), *Operating System Concepts*, hlm 214.
+[^06-sem]: Silberschatz *et al.* (2013), *Operating System Concepts*, hlm 214.
 
 
 ## Jenis Semaphore

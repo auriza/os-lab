@@ -188,10 +188,11 @@ tesseract -l ind "shalat.jpg" stdout
 
 tesseract -l ara "shalat.jpg" stdout
 ```
+<!--
 \textarabic{حافظوا على الصلوات}
 
 \textarabic{والصلاة الوسطى}
-
+-->
 
 ## `espeak`
 Konversi teks ke suara (*speech synthesizer*).
@@ -365,4 +366,6 @@ bmon [OPTION]
 ```
 - `-p IF`: tampilkan *network interface* ini saja
 
+<!--
 # \textarabic{شكرا}
+-->

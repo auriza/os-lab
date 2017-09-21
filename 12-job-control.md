@@ -84,14 +84,14 @@ lsof [OPTION] [FILENAME]
 
 
 ## `nice`
-Menjalankan program dengan prioritas (*niceness*)[^nice] tertentu.
+Menjalankan program dengan prioritas (*niceness*)[^12-nice] tertentu.
 
 ```bash
 nice [OPTION] COMMAND
 ```
 - `-n NICE`: mengeset nilai `NICE`
 
-[^nice]: nilai *niceness* antara -20 (prioritas tinggi) sampai 19 (prioritas rendah)
+[^12-nice]: nilai *niceness* antara -20 (prioritas tinggi) sampai 19 (prioritas rendah)
 
 ## `renice`
 Mengubah prioritas proses yang sudah berjalan.

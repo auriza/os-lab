@@ -52,9 +52,9 @@ header-includes:
 
 Program yang sedang berjalan.
 
-> A program in execution.[^1]
+> A program in execution.[^01-process]
 
-[^1]: Silberschatz *et al.* (2013), *Operating System Concepts*, hlm 105.
+[^01-process]: Silberschatz *et al.* (2013), *Operating System Concepts*, hlm 105.
 
 ## Bagaimana cara menjalankan program?
 
@@ -67,9 +67,9 @@ Misalkan kita ingin menjalankan program Firefox. Ada berapa cara?
 Dua cara:
 
 1. **CLI**: buka *shell*, lalu ketikkan perintah `firefox`.
-2. **GUI**: klik ikon Firefox pada menu aplikasi[^2].
+2. **GUI**: klik ikon Firefox pada menu aplikasi[^01-ff].
 
-[^2]: jika ikon diklik, program akan tetap dijalankan melalui *shell*; coba cek isi *file* `/usr/share/applications/firefox.desktop`.
+[^01-ff]: jika ikon diklik, program akan tetap dijalankan melalui *shell*; coba cek isi *file* `/usr/share/applications/firefox.desktop`.
 
 
 # Shell
@@ -139,10 +139,10 @@ Dua cara:
 
 `int system(char *command);`{.c}
 
-- Menjalankan `command` dengan menjalankan *shell* terlebih dahulu[^3]:
+- Menjalankan `command` dengan menjalankan *shell* terlebih dahulu[^01-man-system]:
     - `sh -c "command"`
 
-[^3]: lihat '`man system`'
+[^01-man-system]: lihat '`man system`'
 
 ## Contoh
 
@@ -201,9 +201,9 @@ Dua cara:
 
 `int execlp(char *file, char *arg, ...);`{.c}
 
-- Menggantikan proses yang ada dengan proses baru[^4]
+- Menggantikan proses yang ada dengan proses baru[^01-exec]
 
-[^4]: lihat '`man exec`'
+[^01-exec]: lihat '`man exec`'
 
 ## Contoh `execlp()`
 

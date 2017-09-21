@@ -10,7 +10,7 @@ theme: Dresden
 
 ## Thread
 
-- *thread* adalah satuan dasar utilisasi CPU[^thread]
+- *thread* adalah satuan dasar utilisasi CPU[^05-thread]
 - tiap *thread* memiliki:
     - id, *program counter*, *register set*, dan *stack*
 - dalam satu proses, *thread* berbagi:
@@ -18,43 +18,43 @@ theme: Dresden
 - proses *multithreaded* memiliki beberapa *thread* yang dapat mengerjakan
     beberapa tugas secara bersamaan
 
-[^thread]: Silberschatz *et al.* (2013), *Operating System Concepts*, hlm 163.
+[^05-thread]: Silberschatz *et al.* (2013), *Operating System Concepts*, hlm 163.
 
 ## POSIX Thread
 
-- UNIX memakai standar POSIX[^posix] *thread* (`pthread`)
+- UNIX memakai standar POSIX[^05-posix] *thread* (`pthread`)
 - saat kompilasi tambahkan *flag* `-pthread`
 
-[^posix]: The Portable Operating System Interface
+[^05-posix]: The Portable Operating System Interface
 
 ## Membuat Thread
 
 `pthread_create(&thread, attr, func, arg);`{.c}
 
 - membuat satu `thread` dengan atribut `attr` yang akan menjalankan fungsi `func`
-    dengan argumen `arg`[^create]
+    dengan argumen `arg`[^05-create]
 - deklarasi fungsi tersebut:
-    - `void *func(void *arg);`{.c}[^void]
+    - `void *func(void *arg);`{.c}[^05-void]
 
 
-[^create]: lihat`'man pthread_create'`
-[^void]: `void*`: tipe data *generic pointer*
+[^05-create]: lihat`'man pthread_create'`
+[^05-void]: `void*`: tipe data *generic pointer*
 
 ## Menunggu Thread
 
 `pthread_join(thread, &retval);`{.c}
 
-- menunggu `thread` selesai dan menyimpan keluarannya ke variabel `retval`[^join]
+- menunggu `thread` selesai dan menyimpan keluarannya ke variabel `retval`[^05-join]
 
-[^join]: lihat`'man pthread_join'`
+[^05-join]: lihat`'man pthread_join'`
 
 ## Mengakhiri Thread
 
 `pthread_exit(retval);`{.c}
 
-- mengakhiri *thread* dengan nilai keluaran `retval`[^exit]
+- mengakhiri *thread* dengan nilai keluaran `retval`[^05-exit]
 
-[^exit]: lihat`'man pthread_exit'`
+[^05-exit]: lihat`'man pthread_exit'`
 
 
 # Contoh

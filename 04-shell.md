@@ -26,13 +26,13 @@ theme: Dresden
 
 ## UNIX Shell
 
-- Lihat **Project 1**[^shell], kerjakan **Part I**, yaitu membuat *shell*
-    - lengkapi contoh program berikut[^shc]
+- Lihat **Project 1**[^04-shell], kerjakan **Part I**, yaitu membuat *shell*
+    - lengkapi contoh program berikut[^04-shc]
 - Kumpulkan di LMS dengan nama *file* `NIM_shell.c`
     - paling lambat setelah praktikum berakhir
 
-[^shell]: Silberschatz *et al.* (2013), *Operating System Concepts*, hlm 157--159
-[^shc]: <https://git.io/vycRv>
+[^04-shell]: Silberschatz *et al.* (2013), *Operating System Concepts*, hlm 157--159
+[^04-shc]: <https://git.io/vycRv>
 
 ## History Feature
 

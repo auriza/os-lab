@@ -400,7 +400,7 @@ exit 0
 
 ## Identifikasi Penyerang
 
-Server NCC diserang dari luar melalui *port* SSH. Cek isi *log file* `auth.log.gz`[^authlog] dan
+Server NCC diserang dari luar melalui *port* SSH. Cek isi *log file* `auth.log.gz`[^13-authlog] dan
 identifikasi *n* alamat IP penyerang terbanyak!
 
 ```sh
@@ -411,7 +411,7 @@ $ ./top-ip-attack auth.log.gz 3
 221.194.47.208  1819
 ```
 
-[^authlog]: <https://lms.ipb.ac.id/mod/folder/view.php?id=28806>
+[^13-authlog]: <https://lms.ipb.ac.id/mod/folder/view.php?id=28806>
 
 ---
 
@@ -449,8 +449,8 @@ exit 0
 ## Cek Tugas Email
 
 Bantulah asprak SO untuk mengidentifikasi praktikan yang belum mengumpulkan tugas email.
-Diberikan *file* `auriza.mbox`[^mbox1], ambil nama *user*-nya, kemudian bandingkan dengan
-daftar *user* pada *file* `passwd`[^passwd]!
+Diberikan *file* `auriza.mbox`[^13-mbox1], ambil nama *user*-nya, kemudian bandingkan dengan
+daftar *user* pada *file* `passwd`[^13-passwd]!
 
 ```sh
 
@@ -460,8 +460,8 @@ michaeln
 ...
 ```
 
-[^mbox1]: <https://lms.ipb.ac.id/mod/folder/view.php?id=28806>
-[^passwd]: <https://lms.ipb.ac.id/mod/folder/view.php?id=28806>
+[^13-mbox1]: <https://lms.ipb.ac.id/mod/folder/view.php?id=28806>
+[^13-passwd]: <https://lms.ipb.ac.id/mod/folder/view.php?id=28806>
 
 ---
 
@@ -501,11 +501,11 @@ exit 0
 ```
 -->
 
-## Tugas: *Spelling Checker*[^tugas]
+## Tugas: *Spelling Checker*[^13-tugas]
 
 Buatlah program untuk mengecek kesalahan ejaan pada dokumen bahasa Inggris.
-Gunakan daftar kata pada *file* `words`[^words] untuk membandingkan ejaan.
-Lihat video berikut[^unix] untuk bantuan *pipeline*-nya.
+Gunakan daftar kata pada *file* `words`[^13-words] untuk membandingkan ejaan.
+Lihat video berikut[^13-unix] untuk bantuan *pipeline*-nya.
 Kumpulkan jawaban di LMS.
 
 ```sh
@@ -516,6 +516,6 @@ timesharing
 unix
 ```
 
-[^tugas]: tugas bersifat **opsional**, plagiasi akan mendapat sanksi berat.
-[^unix]: <https://youtu.be/tc4ROCJYbm0?t=5m58s>
-[^words]: `/usr/share/dict/words`
+[^13-tugas]: tugas bersifat **opsional**, plagiasi akan mendapat sanksi berat.
+[^13-unix]: <https://youtu.be/tc4ROCJYbm0?t=5m58s>
+[^13-words]: `/usr/share/dict/words`

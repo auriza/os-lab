@@ -12,14 +12,14 @@ theme: Dresden
 
 `pid_t fork(void);`{.c}
 
-- Menduplikasi proses[^1]
+- Menduplikasi proses[^02-1]
 
 - *Return value*:
     - jika *parent*: PID *child*
     - jika *child*: 0
     - jika *error*: -1
 
-[^1]: lihat `'man 2 fork'`
+[^02-1]: lihat `'man 2 fork'`
 
 ## Contoh
 
@@ -126,7 +126,7 @@ Dengan menggunakan *looping* dan proses *parent* tidak mencetak apapun:
 
 `pid_t wait(int *status);`{.c}
 
-- Proses *parent* menunggu hingga salah satu proses *child* selesai[^2].
+- Proses *parent* menunggu hingga salah satu proses *child* selesai[^02-2].
     - jika *child* sudah selesai, semua *resource*-nya akan dilepaskan
     - lalu proses *parent* melanjutkan eksekusi proses
 
@@ -135,7 +135,7 @@ Dengan menggunakan *looping* dan proses *parent* tidak mencetak apapun:
 - Argumen `status`: menyimpan *exit status* proses *child*
     - isi dengan `NULL` jika tidak dipakai
 
-[^2]: lihat `'man 2 wait'`
+[^02-2]: lihat `'man 2 wait'`
 
 ## Contoh
 
