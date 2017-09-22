@@ -49,7 +49,7 @@ cat > head.tex << EOF
 EOF
 cat head.tex body.tex > book1.tex
 sed -i '/hyperref/d' book1.tex
-sed -i 's/\\begin{document}/a \
+sed -i '/\\begin{document}/a \
 \\frontmatter' book1.tex
 sed -i '/\\listoffigures/a \
 \\mainmatter' book1.tex
