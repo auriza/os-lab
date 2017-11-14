@@ -180,3 +180,11 @@ stdin  +-----> |   PROSES   | ------>  stdout
     rev < now.txt
     rev < now.txt > rev.txt
     ```
+
+## Tugas Bonus
+
+Buatlah sebuah blog dengan menggunakan aplikasi `hugo`.
+
+Panduannya lihat di:
+
+- <http://os.apps.cs.ipb.ac.id/~auriza/blog/posts/hugo-start/>
