@@ -20,19 +20,19 @@ Mengganti direktori.
 ```bash
 cd [DIRECTORY]
 ```
-Jika tanpa parameter `DIRECTORY`, maka `cd` akan mengganti ke directori *home* (`~`).
+Jika tanpa parameter, maka `cd` akan pindah ke direktori *home* pengguna (`~`).
 
 ## `ls`
-Menampilkan daftar isi direktori.
+Menampilkan list isi direktori.
 ```bash
 ls [OPTION] [FILE]
 ```
-- `-a`: tampilkan juga *dotfile*
-- `-h`: mencetak ukuran dalam format yang mudah dibaca
-- `-i`: cetak nomor indeks setiap *file*
-- `-l`: gunakan format panjang
-- `-r`: balik urutan *sorting*
-- `-S`: *sorting* berdasarkan ukuran
+- `-a`: *all*; tampilkan *dotfile*
+- `-h`: *human-readable*; format ukuran mudah dibaca
+- `-i`: *inode*; cetak nomor indeks
+- `-l`: *long*; format panjang
+- `-r`: *reverse*; balik urutan list
+- `-S`: *size*; urutkan berdasarkan ukuran
 
 ## `touch`
 Meng-*update* waktu akses dan modifikasi suatu `FILE`.
@@ -46,7 +46,7 @@ Membuat direktori.
 ```bash
 mkdir [OPTION] DIRECTORY
 ```
-- `-p`: buar direktori *parent* jika diperlukan
+- `-p`: *parent*; buat direktori *parent* jika diperlukan
 
 ## `cp`
 Menyalin *file* dan direktori.
@@ -54,9 +54,9 @@ Menyalin *file* dan direktori.
 cp [OPTION] SOURCE DEST
 cp [OPTION] SOURCES... DIRECTORY
 ```
-- `-f`: tanpa konfirmasi jika terjadi *overwrite*
-- `-i`: meminta konfirmasi sebelum *overwrite*
-- `-r`: salin direktori secara rekursif
+- `-f`: *force*; tanpa konfirmasi jika terjadi *overwrite*
+- `-i`: *interactive*; ada konfirmasi sebelum *overwrite*
+- `-r`: *recursive*; salin direktori secara rekursif
 
 ## `mv`
 Memindahkan (mengganti nama)  *file*.
@@ -64,24 +64,25 @@ Memindahkan (mengganti nama)  *file*.
 mv [OPTION] SOURCE DEST
 mv [OPTION] SOURCES... DIRECTORY
 ```
-- `-f`: tanpa konfirmasi jika terjadi *overwrite*
-- `-i`: meminta konfirmasi sebelum *overwrite*
+- `-f`: *force*; tanpa konfirmasi jika terjadi *overwrite*
+- `-i`: *interactive*; ada konfirmasi sebelum *overwrite*
 
 ## `rm`
 Menghapus *file* atau direktori.
 ```bash
 rm [OPTION] FILE...
 ```
-- `-f`: tanpa konfirmasi, abaikan jika *file* tidak ada
-- `-i`: meminta konfirmasi setiap kali menghapus
-- `-r`: hapus direktori dan isinya secara rekursif
+- `-f`: *force*; tanpa konfirmasi dan abaikan *error*
+- `-i`: *interactive*; meminta konfirmasi setiap kali menghapus
+- `-r`: *recursive*; hapus direktori seisinya secara rekursif
 
 ## `rmdir`
 Menghapus direktori kosong.
 ```bash
 rmdir [OPTION] DIRECTORY...
 ```
-- `-p`: hapus `DIRECTORY` dan pendahulunya; misal: '`rmdir -p a/b/c`' sama dengan '`rmdir a/b/c a/b a`'
+- `-p`: *parent*; hapus beserta *parent*-nya
+    - misal: '`rmdir -p a/b/c`' sama dengan '`rmdir a/b/c a/b a`'
 
 ## *Dotfile*
 *File* yang namanya diawali dengan tanda titik. Secara umum, *dotfile* tidak akan terlihat (*hidden*). Biasanya digunakan untuk menyimpan konfigurasi program.
@@ -103,19 +104,19 @@ direktori *root*, yaitu direktori paling atas
 ## *Path*
 
 ###  *Absolute*
-*path* ditulis lengkap dari direktori *root*; contoh: '`/etc`'
+ditulis lengkap dari direktori *root*; contoh: '`/etc`'
 
 ### *Relative*
-*path* ditulis relatif terhadap posisi saat ini; contoh: '`../etc`'
+ditulis relatif terhadap posisi saat ini; contoh: '`../etc`'
 
 ## Tugas
 
 - masuk ke direktori *home* anda
 - buat direktori `public_html`
 - masuk ke direktori tersebut
-- unduh templat resume berikut ke sini
+- unduh dengan `wget` templat resume berikut
     - <https://raw.githubusercontent.com/auriza/os-lab/master/txt/bio.html>
 - ubah nama *file* menjadi `resume.html`
-- edit *file* sesuai dengan data anda
-- untuk melihat hasilnya, buka halaman web berikut
-    - <http://os.apps.cs.ipb.ac.id/~username/resume.html>
+- edit *file* sesuai dengan data diri anda
+- hasilnya bisa dilihat pada laman:
+    - <http://os.apps.cs.ipb.ac.id/~$USER/resume.html>

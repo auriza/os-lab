@@ -42,19 +42,19 @@ Berubah menjadi *user* lain atau menjadi *superuser*.
 ```bash
 su [OPTION] [USERNAME]
 ```
-- `-c COMMAND`: menjalankan perintah `COMMAND`
-- `-l`: seperti *login* langsung (*default environment*)
+- `-c CMD`: *command*; jalankan perintah `CMD`
+- `-l`: *login*; set *environment* seperti kalau login langsung
 
 ## `chown`
 Mengubah kepemilikan suatu *file*.
 ```bash
 chown [OPTION] [OWNER][:GROUP] FILE
 ```
-- `-R`: rekursif
+- `-R`: *recursive*; berlaku pada direktori dan seisinya
 
 ---
 
-![Membuka akses untuk publik](img/chown-chmod.png)
+![Mode akses publik](img/chown-chmod.png)
 
 ## `chmod`
 Mengganti mode *permission* suatu *file*.
@@ -62,7 +62,7 @@ Mengganti mode *permission* suatu *file*.
 chmod [OPTION] MODE[,MODE]... FILE...
 chmod [OPTION] OCTAL-MODE FILE...
 ```
-- `-R`: rekursif
+- `-R`: *recursive*; berlaku pada direktori dan seisinya
 
 ## Format `chmod`
 
@@ -110,7 +110,7 @@ Membuat *link* antar-*file*.
 ```bash
 ln [OPTION] TARGET LINK-NAME
 ```
-- `-s`: *symbolic link*
+- `-s`: *symbolic*; buat *symlink*
 
 
 ## *Stream* Standar
