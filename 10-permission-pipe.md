@@ -1,5 +1,5 @@
 ---
-title: Permission, Link, Pipe, Redirection
+title: Permission, Link, dan Stream
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
 date: 2017
@@ -9,6 +9,7 @@ header-includes:
 ---
 
 
+# Permission
 
 
 ## *Ownership*
@@ -20,6 +21,11 @@ header-includes:
 
 ##  *Permission*
 
+- Tiga jenis *user*:
+    - *user owner* (`u`)
+    - *group owner* (`g`)
+    - *others* (`o`)
+
 - Tiga jenis *permission*:
 
 |*Permission* | *File*    | *Directory*           |
@@ -28,14 +34,7 @@ header-includes:
 |`w`          | *write*   | *add or remove files* |
 |`x`          | *execute* | *enter the directory* |
 
-- Tiga jenis *user*:
-    - *user owner* (`u`)
-    - *group owner* (`g`)
-    - *others* (`o`)
-
----
-
-![UNIX permissions](img/permissions.png)
+<!--
 
 ## `su`
 Berubah menjadi *user* lain atau menjadi *superuser*.
@@ -43,35 +42,34 @@ Berubah menjadi *user* lain atau menjadi *superuser*.
 su [OPTION] [USERNAME]
 ```
 - `-c CMD`: *command*; jalankan perintah `CMD`
-- `-l`: *login*; set *environment* seperti kalau login langsung
+- `-l`: *login*; set *environment* seperti jika login langsung
+
+-->
 
 ## `chown`
 Mengubah kepemilikan suatu *file*.
 ```bash
-chown [OPTION] [OWNER][:GROUP] FILE
+chown [OPTION] OWNER[:GROUP] FILE
 ```
-- `-R`: *recursive*; berlaku pada direktori dan seisinya
+- `-R`: *recursive*; ubah direktori seisinya
 
 ---
 
 ![Mode akses publik](img/chown-chmod.png)
 
 ## `chmod`
-Mengganti mode *permission* suatu *file*.
+Mengubah mode *permission* suatu *file*.
 ```bash
-chmod [OPTION] MODE[,MODE]... FILE...
-chmod [OPTION] OCTAL-MODE FILE...
+chmod [OPTION] MODE FILE...
 ```
-- `-R`: *recursive*; berlaku pada direktori dan seisinya
+- `-R`: *recursive*; ubah direktori seisinya
 
 ## Format `chmod`
 
 - Format mode simbolis:
-    - `[ugoa][+-=][rwxX]`
-- Format mode numerik:
-    - digit oktal = 4 (*read*) + 2 (*write*) + 1 (*exec*)
-
-- *Catatan*: opsi *permission* `X` hanya akan mengeset bit *execute* untuk direktori saja
+    - `[ugoa][+-=][rwx]`
+- Format mode oktal:
+    - 4 (*read*) + 2 (*write*) + 1 (*exec*)
 
 ## Contoh `chmod`
 
@@ -82,8 +80,14 @@ chmod [OPTION] OCTAL-MODE FILE...
     - `chmod ug=rw,o= FILE`
     - `chmod 660 FILE`
 - `rwxr-xr-x`
-    - `chmod a=rx,u+w FILE`
+    - `chmod u=rwx,go=rx FILE`
     - `chmod 755 FILE`
+
+---
+
+![UNIX permissions](img/permissions.png)
+
+# Link
 
 ## Link
 
@@ -113,25 +117,22 @@ ln [OPTION] TARGET LINK-NAME
 - `-s`: *symbolic*; buat *symlink*
 
 
+# Stream
+
 ## *Stream* Standar
 
-Setiap proses yang berjalan memiliki tiga *stream* standar I/O:
+Setiap proses memiliki tiga *stream* standar I/O:
 
-- *standard input* (`stdin`)
-- *standard output* (`stdout`)
-- *standard error* (`stderr`)
+0. *standard input* (`stdin`)
+1. *standard output* (`stdout`)
+2. *standard error* (`stderr`)
 
 ```
-               +------------+
-               |            |
-stdin  +-----> |   PROSES   | ------>  stdout
-               |            |
-               +------+-----+
-                      |
-                      |
-                      v
-                    stderr
-
+            +------------+
+            |            | --->  stdout
+stdin  +--> |   PROSES   |
+            |            | --->  stderr
+            +------------+
 ```
 
 ---
@@ -183,7 +184,7 @@ stdin  +-----> |   PROSES   | ------>  stdout
 
 ## Tugas Bonus
 
-Buatlah sebuah blog dengan menggunakan aplikasi `hugo`.
+Buatlah sebuah blog dengan menggunakan '`hugo`'.
 
 Panduannya lihat di:
 

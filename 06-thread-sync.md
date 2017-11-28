@@ -27,10 +27,6 @@ header-includes:
     - hanya satu proses/*thread* dalam satu waktu yang dapat masuk
 - menggunakan *mutex lock* atau *semaphore*
 
----
-
-![*Don't share mutable state*](img/dont-share-mutable-state.png)
-
 
 # Mutual Exclusion
 
@@ -41,6 +37,10 @@ header-includes:
 > When finished, the thread gives (frees) the key to the next thread in the group.[^06-mutex]
 
 [^06-mutex]: <http://koti.mbnet.fi/niclasw/MutexSemaphore.html>
+
+---
+
+![Mutex mengatur akses ke *shared resource*](img/mutexes.png)
 
 
 ## Fungsi Mutex

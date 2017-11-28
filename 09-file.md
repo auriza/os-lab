@@ -9,6 +9,12 @@ theme: Dresden
 
 # File dan Direktori
 
+## `file`
+Menentukan jenis *file*.
+```bash
+file FILE...
+```
+
 ## `pwd`
 Mencetak nama direktori saat ini.
 ```bash
@@ -20,19 +26,17 @@ Mengganti direktori.
 ```bash
 cd [DIRECTORY]
 ```
-Jika tanpa parameter, maka `cd` akan pindah ke direktori *home* pengguna (`~`).
+Jika tanpa parameter, *default*-nya ke direktori *home* pengguna (`~`).
 
 ## `ls`
 Menampilkan list isi direktori.
 ```bash
 ls [OPTION] [FILE]
 ```
-- `-a`: *all*; tampilkan *dotfile*
-- `-h`: *human-readable*; format ukuran mudah dibaca
-- `-i`: *inode*; cetak nomor indeks
+- `-a`: *all*; tampilkan semua
 - `-l`: *long*; format panjang
-- `-r`: *reverse*; balik urutan list
-- `-S`: *size*; urutkan berdasarkan ukuran
+- `-h`: *human-readable*; format ukuran
+- `-i`: *inode*; cetak nomor inode *file*
 
 ## `touch`
 Meng-*update* waktu akses dan modifikasi suatu `FILE`.
@@ -54,9 +58,9 @@ Menyalin *file* dan direktori.
 cp [OPTION] SOURCE DEST
 cp [OPTION] SOURCES... DIRECTORY
 ```
+- `-r`: *recursive*; salin direktori seisinya secara rekursif
 - `-f`: *force*; tanpa konfirmasi jika terjadi *overwrite*
 - `-i`: *interactive*; ada konfirmasi sebelum *overwrite*
-- `-r`: *recursive*; salin direktori secara rekursif
 
 ## `mv`
 Memindahkan (mengganti nama)  *file*.
@@ -72,9 +76,9 @@ Menghapus *file* atau direktori.
 ```bash
 rm [OPTION] FILE...
 ```
+- `-r`: *recursive*; hapus direktori seisinya secara rekursif
 - `-f`: *force*; tanpa konfirmasi dan abaikan *error*
 - `-i`: *interactive*; meminta konfirmasi setiap kali menghapus
-- `-r`: *recursive*; hapus direktori seisinya secara rekursif
 
 ## `rmdir`
 Menghapus direktori kosong.
@@ -83,6 +87,14 @@ rmdir [OPTION] DIRECTORY...
 ```
 - `-p`: *parent*; hapus beserta *parent*-nya
     - misal: '`rmdir -p a/b/c`' sama dengan '`rmdir a/b/c a/b a`'
+
+## `tree`
+Menampilkan isi direktori dalam format *tree*.
+```bash
+tree [OPTION] [DIRECTORY...]
+```
+- `-L N`: level kedalaman direktori
+- `-h`: *human-readable*; format ukuran
 
 ## *Dotfile*
 *File* yang namanya diawali dengan tanda titik. Secara umum, *dotfile* tidak akan terlihat (*hidden*). Biasanya digunakan untuk menyimpan konfigurasi program.
@@ -111,12 +123,15 @@ ditulis relatif terhadap posisi saat ini; contoh: '`../etc`'
 
 ## Tugas
 
-- masuk ke direktori *home* anda
-- buat direktori `public_html`
-- masuk ke direktori tersebut
-- unduh dengan `wget` templat resume berikut
-    - <https://raw.githubusercontent.com/auriza/os-lab/master/txt/bio.html>
-- ubah nama *file* menjadi `resume.html`
-- edit *file* sesuai dengan data diri anda
-- hasilnya bisa dilihat pada laman:
-    - <http://os.apps.cs.ipb.ac.id/~$USER/resume.html>
+- Buat direktori publik
+    - masuk ke direktori *home* anda
+    - buat direktori `public_html`
+- Unduh templat
+    - masuk ke direktori tersebut
+    - unduh dengan '`wget`' templat resume berikut:
+        - <https://raw.githubusercontent.com/auriza/os-lab/master/txt/bio.html>
+    - ubah nama *file* menjadi `resume.html`
+- Edit dan keluaran
+    - edit *file* dengan '`editor`' sesuai dengan data diri anda
+    - hasilnya bisa dilihat pada laman:
+        - <http://os.apps.cs.ipb.ac.id/~$USER/resume.html>

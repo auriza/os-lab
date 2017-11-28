@@ -1,5 +1,5 @@
 ---
-title: Process and Job Control
+title: Proses dan Job
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
 date: 2017
@@ -15,19 +15,22 @@ Menampilkan cuplikan informasi proses yang sedang berjalan.
 ```bash
 ps [OPTION]
 ```
-- `-e`: (*every*) semua proses
-- `-f`: (*full*) format lengkap
-- `-L`: (*lightweight*) tampilkan informasi *thread*
-- `--forest`: pohon proses
+- `-e`: *every*; semua proses
+- `-F`: *full*; format ekstra lengkap
+- `-L`: *lightweight*; tampilkan info LWP (*thread*)
+- `--forest`: format pohon proses
 
+---
+
+![Sintaks BSD vs POSIX](img/ps.png)
 
 ## `pstree`
 Menampilkan pohon proses.
 ```bash
-pstree [OPTION] [PID|USER]
+pstree [OPTION] [PID,USER]
 ```
-- `-n`: (*numeric*) urutkan berdasarkan PID
-- `-p`: (PID) tampilkan PID
+- `-n`: *numeric*; urutkan berdasarkan ID proses
+- `-p`: PID; tampilkan ID proses
 
 
 ## `top`
@@ -35,32 +38,44 @@ Memonitor proses.
 ```bash
 top [OPTION]
 ```
-- `-u USER`: proses milik `USER` tertentu saja
-- `-p PID`: proses `PID` tertentu saja
+- `-u USER`: proses milik *USER* saja
+- `-p PID`: proses *PID* saja
 
 ## `htop`
 Memonitor proses secara interaktif.
 ```bash
 htop [OPTION]
 ```
-- `-u USER`: proses milik `USER` tertentu saja
-- `-p PID`: proses `PID` tertentu saja
+- `-u USER`: proses milik *USER* saja
+- `-p PID`: proses *PID* saja
 
-## `pgrep`
-Mendapatkan PID suatu proses berdasarkan namanya.
+## Penjelasan Kolom[^12-htop]
+
+- `PID`: process id
+- `USER`: process user
+- `PR`, `NI`: priority, nice value (PR = 20 + NI)
+- `VIRT`: virtual image size
+- `RES`: resident memory size
+- `SHR`: shared memory size
+- `S`: process state
+    - `R`: running or runnable
+    - `S`: sleep
+    - `D`: waiting for disk I/O
+    - `T`: stopped
+
+[^12-htop]: *lihat* <https://peteris.rocks/blog/htop/>
+
+## `pidof`
+Mendapatkan PID dari program yang sedang berjalan.
 ```bash
-pgrep [OPTION] PATTERN
+pidof PROGRAM
 ```
-- `-u USER`: proses milik `USER` tertentu saja
-
 
 ## `kill`
 Mengirim sinyal ke suatu proses (*default* `SIGTERM`).
 ```bash
-kill [OPTION] PID
+kill [-SIGNAL] PID...
 ```
-- `-SIG`: mengirim sinyal `SIG`
-- `-l`: (*list*) menampilkan semua daftar sinyal
 
 ---
 
@@ -70,53 +85,73 @@ kill [OPTION] PID
 ## `pmap`
 Menampilkan *memory map* sebuah proses.
 ```bash
-pmap [OPTION] PID ...
+pmap PID
 ```
-- `-x`: *extended format*
-
 
 ## `lsof`
 Menampilkan daftar *file* yang sedang dibuka oleh proses.
 ```bash
-lsof [OPTION] [FILENAME]
+lsof [-p PID]
 ```
-- `-p PID`: proses `PID` tertentu saja
 
 
 ## `nice`
-Menjalankan program dengan prioritas (*niceness*)[^12-nice] tertentu.
-
+Menjalankan program dengan nilai *nice*[^12-nice] tertentu (*default*: 10).
 ```bash
-nice [OPTION] COMMAND
+nice [-n NICE] COMMAND
 ```
-- `-n NICE`: mengeset nilai `NICE`
 
-[^12-nice]: nilai *niceness* antara -20 (prioritas tinggi) sampai 19 (prioritas rendah)
+[^12-nice]: nilai *nice* antara -20 (prioritas tinggi) sampai +19 (prioritas rendah)
 
 ## `renice`
 Mengubah prioritas proses yang sudah berjalan.
 ```bash
-renice [OPTION] PID
+renice [-n] NICE PID
 ```
-- `-n NICE`: mengubah nilai `NICE`
+
+## `time`
+Menjalankan program dan meringkas penggunaan waktu CPU.
+```bash
+time COMMAND
+```
+
+---
+
+![*User-space* vs *kernel-space*](img/userspace.png)
+
+## `timeout`
+Menjalankan program dengan batasan waktu tertentu.
+```bash
+timeout DURATION COMMAND
+```
+
+## `prlimit`
+Mengatur batas penggunaan *resource* proses.
+```bash
+prlimit [OPTION] COMMAND
+```
+- `-t`: *time*; waktu CPU (detik)
+- `-s`: *stack*; ukuran *stack* (byte)
+- `-v`: *virtual memory*; ukuran memori (byte)
+- `-n`: *number of open files*
 
 ---
 
 ![*Process information filesystem*](img/proc.png)
 
 
-# Job Control
+# Job
 
-## Process State
+## State Proses
 
-![*Process state*](img/linux-jobs-control.png)
+![*State* proses yang bisa dikontrol oleh *user*](img/linux-jobs-control.png)
 
 
-## Background Process
+## Proses Background
 
 Untuk menjalankan proses di *background*, tambahkan tanda `&` pada akhir perintah.
 ```bash
-COMMAND &
+COMMAND... &
 ```
 
 ## `jobs`
@@ -128,13 +163,95 @@ jobs
 ## `fg`
 Memindahkan *job* ke *foreground*.
 ```bash
-fg [JOBSPEC]
+fg [%JOB]
 ```
 
 ## `bg`
 Memindahkan *job* ke *background*.
 ```bash
-bg [JOBSPEC]
+bg [%JOB]
 ```
 
-<!-- TODO: at atq atrm nohup disown time ulimit timeout-->
+## `at`
+Menjadwalkan *job* untuk dijalankan di masa depan.
+```bash
+at HH:MM [YYYY-MM-DD]
+```
+- `-l`: *list*; tampilkan daftar antrian *job*
+- `-r`: *remove*; hapus *job* dari antrian
+
+
+# Latihan UASP
+
+---
+
+```bash
+# pindah ke direktori home anda
+...
+# buat satu folder kosong 'test'
+...
+# masuk ke direktori 'test'
+...
+# tampilkan path direktori saat ini
+...
+# buat file kosong bernama 'empty.txt'
+...
+```
+
+---
+
+```bash
+# copy file '/etc/timezone' ke direktori ini
+...
+# ubah nama file 'timezone' menjadi 'tz'
+...
+# list isi direktori ini
+...
+# pindah ke direktori parent
+...
+# hapus direktori 'test' seisinya
+...
+```
+
+---
+
+```bash
+# temukan file dengan nama 'fdisk' memakai `locate`
+...
+# temukan file dengan nama 'fdisk' memakai `find`
+...
+# temukan file pada home anda yang ukurannya > 200 MB
+...
+# temukan file pada home anda yang diubah < 3 hari
+...
+```
+
+---
+
+```bash
+# tampilkan 5 baris pertama keluaran perintah `last`
+...
+# tampilkan dua baris terakhir file '/etc/passwd'
+...
+# cari file di '/usr/include' yang memuat kata 'sem_post'
+...
+# tampilkan kolom 1 dan 5 dari file '/etc/passwd'
+...
+# tampilkan isi file '/etc/motd' dalam huruf kapital
+...
+```
+
+---
+
+```bash
+# buka manual untuk `gittutorial`
+...
+# hentikan sementara dengan menekan tombol:
+...
+# tampilkan daftar job
+...
+# lanjutkan program manual di atas pada foreground
+...
+# tutup program manual dengan menekan tombol:
+...
+```

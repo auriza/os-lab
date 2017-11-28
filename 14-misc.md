@@ -327,27 +327,27 @@ Menampilkan sisa ruang disk.
 ```sh
 df [OPTION]
 ```
-- `-a`: tampilkan semua *filesystem*
-- `-h`: tampilkan dalam format *human-readable*
-- `-i`: tampilkan informasi inode
-- `-T`: tampilkan tipe *filesystem*
+- `-a`: *all*; tampilkan semua *filesystem*
+- `-h`: *human-readable*; format ukuran
+- `-i`: *inode*; tampilkan info inode
+- `-T`: *type*; tampilkan jenis *filesystem*
 
 ## `du`
-Menampilkan perkiraan penggunaan disk.
+Menampilkan penggunaan disk.
 ```sh
 du [OPTION] [FILE]
 ```
-- `-d N`: tingkat kedalaman direktori
-- `-h`: tampilkan dalam format *human-readable*
-- `-s`: tampilkan totalnya saja
-- `--inodes`: tampilkan informasi inode
+- `-d N`: *depth*; tingkat kedalaman direktori
+- `-h`: *human-readable*; format ukuran
+- `-s`: *summary*; tampilkan total ukuran
+- `--inodes`: tampilkan informasi penggunaan *inode*
 
 ## `free`
 Menampilkan besar memori yang kosong dan terpakai.
 ```sh
 free [OPTION]
 ```
-- `-h`: tampilkan dalam format *human-readable*
+- `-h`: *human-readable*; format ukuran
 
 ## `vmstat`
 Menampilkan statistik *virtual memory*.

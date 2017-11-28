@@ -4,6 +4,8 @@ author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
 date: 2017
 theme: Dresden
+header-includes:
+    - \renewcommand{\figurename}{Gambar}
 ---
 
 # Thread
@@ -14,15 +16,24 @@ theme: Dresden
 - tiap *thread* memiliki:
     - id, *program counter*, *register set*, dan *stack*
 - dalam satu proses, *thread* berbagi:
-    - segmen *code*, segmen *data*, dan sumberdaya lainnya, seperti *file*
+    - segmen teks, data, dan *heap*, serta sumberdaya lain (mis. *file*)
 - proses *multithreaded* memiliki beberapa *thread* yang dapat mengerjakan
     beberapa tugas secara bersamaan
 
 [^05-thread]: Silberschatz *et al.* (2013), *Operating System Concepts*, hlm 163.
 
+---
+
+![*Thread*](img/threads.png)
+
+---
+
+![Tiap *thread* memiliki *stack* sendiri, tapi berbagi *heap*](img/dont-share-mutable-state.png)
+
+
 ## POSIX Thread
 
-- UNIX memakai standar POSIX[^05-posix] *thread* (`pthread`)
+- Linux memakai *thread* standar POSIX[^05-posix] (`pthread`)
 - saat kompilasi tambahkan *flag* `-pthread`
 
 [^05-posix]: The Portable Operating System Interface
