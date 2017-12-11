@@ -132,18 +132,18 @@ echo $((x > y)) $((x == y)) $((x > y && y > 0))
 ## Parameter Khusus
 
 - `$@`{.sh}: semua parameter
+    - `$0`{.sh}: nama program
     - `$1`{.sh}: parameter pertama
     - `$2`{.sh}: parameter kedua
     - ...
 - `$#`{.sh}: jumlah semua parameter
 - `$?`{.sh}: status keluaran perintah terakhir
+- `$!`{.sh}: PID proses *background* terakhir
 - `$$`{.sh}: PID proses *shell*
 
 
-# Ekspresi
-
 ## `[`
-Mengecek *file* dan membandingkan nilai. Status keluaran berupa 0 (*true*) atau 1 (*false*).
+Mengevaluasi ekspresi kondisional.
 ```sh
 [ EXPR ]
 ```
@@ -159,19 +159,16 @@ Mengecek *file* dan membandingkan nilai. Status keluaran berupa 0 (*true*) atau 
 ## `[`
 
 ```sh
-[ "hello" ]; echo $?
-  # 0 (true)
-
 [ -r /etc/passwd ]; echo $?
   # 0 (true)
 
-[ -r /etc/passwd ] && [ ! -w /etc/passwd ]; echo $?
-  # 0 (true)
-
-[ "hello" = "world" ]; echo $?
+[ -w /etc/passwd ]; echo $?
   # 1 (false)
 
-[ 3 -gt 2 ]; echo $?
+[ "cat" = "long" ]; echo $?
+  # 1 (false)
+
+[ 10000 -gt 9999 ]; echo $?
   # 0 (true)
 ```
 
@@ -225,6 +222,8 @@ fi
 
 ```sh
 case WORD in
+    PATTERN)
+        ... ;;
     PATTERN)
         ... ;;
 esac
