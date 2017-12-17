@@ -6,6 +6,7 @@ date: 2017
 theme: Dresden
 header-includes:
     - \renewcommand{\figurename}{Gambar}
+    - \renewcommand{\tablename}{Tabel}
 ---
 
 # Proses
@@ -17,12 +18,14 @@ ps [OPTION]
 ```
 - `-e`: *every*; semua proses
 - `-F`: *full*; format ekstra lengkap
-- `-L`: *lightweight*; tampilkan info LWP (*thread*)
+- `-L`: LWP; tampilkan info *thread*
 - `--forest`: format pohon proses
 
+<!--
 ---
 
 ![Sintaks BSD vs POSIX](img/ps.png)
+-->
 
 ## `pstree`
 Menampilkan pohon proses.
@@ -49,21 +52,25 @@ htop [OPTION]
 - `-u USER`: proses milik *USER* saja
 - `-p PID`: proses *PID* saja
 
-## Penjelasan Kolom[^12-htop]
+---
 
-- `PID`: process id
-- `USER`: process user
-- `PR`, `NI`: priority, nice value (PR = 20 + NI)
-- `VIRT`: virtual image size
-- `RES`: resident memory size
-- `SHR`: shared memory size
-- `S`: process state
-    - `R`: running or runnable
-    - `S`: sleep
-    - `D`: waiting for disk I/O
-    - `T`: stopped
+: Penjelasan kolom `htop`[^12-htop]
 
-[^12-htop]: *lihat* <https://peteris.rocks/blog/htop/>
+Kolom       Keterangan
+-----       -----
+`PID`       ID proses
+`USER`      pemilik proses
+`PR`, `NI`  prioritas, nilai *nice*
+`VIRT`      ukuran memori virtual (keseluruhan proses)
+`RES`       ukuran memori residen (fisik)
+`SHR`       ukuran memori yang bisa di-*share*
+`S`         status proses
+            - `R`: *running*
+            - `S`: *sleeping* (*idle*)
+            - `D`: *disk waiting*
+            - `T`: *stopped*
+
+[^12-htop]: *lihat* '`man htop`'
 
 ## `pidof`
 Mendapatkan PID dari program yang sedang berjalan.
@@ -142,9 +149,9 @@ prlimit [OPTION] COMMAND
 
 # Job
 
-## State Proses
+## Status Job
 
-![*State* proses yang bisa dikontrol oleh *user*](img/linux-jobs-control.png)
+![Status *job*](img/linux-jobs-control.png)
 
 
 ## Proses Background
@@ -163,13 +170,13 @@ jobs
 ## `fg`
 Memindahkan *job* ke *foreground*.
 ```bash
-fg [%JOB]
+fg %JOB
 ```
 
 ## `bg`
 Memindahkan *job* ke *background*.
 ```bash
-bg [%JOB]
+bg %JOB
 ```
 
 ## `at`
@@ -244,14 +251,27 @@ at HH:MM [YYYY-MM-DD]
 ---
 
 ```bash
-# buka manual untuk `gittutorial`
-...
-# hentikan sementara dengan menekan tombol:
+# jalankan `cat /dev/random > rand` di background
 ...
 # tampilkan daftar job
 ...
-# lanjutkan program manual di atas pada foreground
+# kirim sinyal STOP ke job tersebut
 ...
-# tutup program manual dengan menekan tombol:
+# lanjutkan job tersebut di background
 ...
+# kirim sinyal TERM ke job tersebut
+...
+```
+
+## Kisi-kisi
+
+```
+echo hostname uname date cal who
+cd pwd ls touch
+cp mv rm mkdir rmdir
+chmod ln
+locate find wc grep
+cat head tail sort uniq cut tr sed
+ps nice renice pidof kill
+& jobs fg bg
 ```
