@@ -36,9 +36,8 @@ Mencari lokasi *file* berdasarkan namanya pada *database*.
 ```bash
 locate [OPTION] 'PATTERN'
 ```
-- `-i`: *insensitive*; abaikan *case*
-- `-c`: *count*; cetak jumlah *file* yang ditemukan
-
+- `-c`: *count*; tampilkan jumlah *file* yang ditemukan
+- `-i`: *ignore-case*
 
 ## `find`
 Mencari *file* langsung pada sebuah hierarki direktori.
@@ -56,31 +55,37 @@ find [PATH] [TEST]...
 ## `xargs`
 Mengubah tiap baris masukan menjadi argumen suatu perintah.
 ```bash
-xargs [OPTION] COMMAND
+... | xargs COMMAND
 ```
-- `-L N`: *line*; gunakan *N* baris argumen untuk tiap perintah
 
 ### Contoh
 
 ```bash
-# temukan semua file backup (.bak) di direktori ini,
-# lalu hapus satu-per-satu
-find . -name '*.bak' | xargs -L 1 rm
+# temukan semua file backup (.bak), lalu hapus
+find . -name '*.bak' | xargs rm
 ```
-
 
 ## `grep`
 Mencetak baris teks yang cocok dengan suatu pola.
 ```bash
 grep [OPTION] 'PATTERN' FILE
 ```
-- `-c`: *count*; tampilkan jumlah baris
-- `-i`: *insensitive*; abaikan *case*
-- `-v`: *invert*; kebalikan dari pola yang diberikan
+- `-c`: *count*; tampilkan jumlah baris yang cocok
+- `-i`: *ignore-case*
 - `-r`: rekursif
-
+- `-v`: *invert*; kebalikan dari pola yang diberikan
 
 # Editor Teks
+
+## `pager` (`less`)
+Menampilkan *file* teks per halaman layar.
+```bash
+pager [FILE]...
+```
+- `q`: *quit*; keluar
+- `/`: pencarian kata
+    - `n`: *next*; lanjutkan pencarian kata
+    - `N`: *next-reverse*; lanjutkan pencarian kata mundur
 
 ## `editor` (`nano`)
 Membuat dan mengedit *file* teks.
@@ -119,22 +124,43 @@ vi [OPTION] [FILE]...
 
 # Pemrosesan Teks
 
-
 ## `cat`
 Menggabungkan *file* dan menampilkannya ke layar.
 ```bash
-cat [OPTION] [FILE]...
+cat [FILE]...
 ```
-- `-n`: *number*; berikan nomor baris
-
 
 ## `split`
 Memecah *file* menjadi beberapa bagian.
 ```bash
 split [OPTION] FILE [PREFIX]
 ```
-- `-b N`: *bytes*; pecah per *N* *byte*
-- `-l N`: *lines*; pecah per *N* baris
+- `-b`: *bytes*; pecah per sekian *byte*
+- `-l`: *lines*; pecah per sekian baris
+
+## `head`
+Menampilkan bagian awal *file* (*default*: 10 baris).
+```bash
+head [OPTION] [FILE]
+```
+- `-b`: *bytes*; tampilkan sekian *byte* awal
+- `-n`: *lines*; tampilkan sekian baris awal
+
+## `tail`
+Menampilkan bagian akhir *file* (*default*: 10 baris).
+```bash
+tail [OPTION] [FILE]
+```
+- `-b`: *bytes*; tampilkan sekian *byte* terakhir
+- `-n`: *lines*; tampilkan sekian baris terakhir
+
+<!--
+- `-f`: *follow*; ikuti penambahan isi *file*
+
+---
+
+![`tail -f`](img/tail.png)
+-->
 
 ## `sort`
 Mengurutkan baris teks pada *file*.
@@ -151,39 +177,6 @@ uniq [OPTION] [FILE]
 ```
 - `-c`: *count*; tampilkan jumlah kemunculan
 - `-i`: *ignore-case*
-- `-u`: *unique*; cetak baris yang unik saja
-- `-d`: *duplicate*; cetak baris yang berulang saja
-
-## `pager` (`less`)
-Menampilkan *file* teks per halaman layar.
-```bash
-pager [FILE]...
-```
-- `q`: *quit*; keluar
-- `/`: pencarian kata
-    - `n`: *next*; lanjutkan pencarian kata
-    - `N`: *next-reverse*; lanjutkan pencarian kata mundur
-
-## `head`
-Menampilkan bagian awal *file*.
-```bash
-head [OPTION] [FILE]
-```
-- `-n K`: *lines*; tampilkan *K* baris pertama
-- `-b K`: *bytes*; tampilkan *K* *byte* pertama
-
-## `tail`
-Menampilkan bagian akhir *file*.
-```bash
-tail [OPTION] [FILE]
-```
-- `-n K`: *lines*; tampilkan *K* baris terakhir
-- `-b K`: *bytes*; tampilkan *K* *byte* terakhir
-- `-f`: *follow*; ikuti penambahan isi *file*
-
----
-
-![`tail -f`](img/tail.png)
 
 ## `tr`
 Translasi karakter dari set pertama ke set kedua.
@@ -191,6 +184,7 @@ Translasi karakter dari set pertama ke set kedua.
 ```bash
 tr [OPTION] SET1 [SET2]
 ```
+- `-c`: *complement*; gunakan komplemen dari *SET1*
 - `-d`: *delete*; hapus karakter pada *SET1*
 - `-s`: *squeeze*; hapus karakter yang berulang pada *SET1*
 
@@ -207,9 +201,9 @@ Mengambil karakter/kolom tertentu dari tiap baris teks.
 ```bash
 cut OPTION [FILE]
 ```
-- `-c N-M`: *char*; cetak karakter *N--M*
-- `-f N-M`: *field*; cetak kolom *N--M*
-- `-d DELIM`: *delimiter*; pemisah antarkolom
+- `-c`: *char*; cetak karakter berikut
+- `-f`: *field*; cetak kolom berikut
+- `-d`: *delimiter*; pemisah antarkolom
 
 ## `paste`
 Menggabungkan tiap baris dari beberapa *file* per kolom.
@@ -220,26 +214,21 @@ paste [OPTION] [FILE...]
 - `-s`: *serial*; gabungkan isi *file* menjadi sebaris
 
 ## `join`
-Menggabungkan baris dari dua *file* berdasarkan kolom tertentu.
+Menggabungkan baris dari dua *file* berdasarkan kolom bersama.
 ```bash
 join [OPTION] FILE1 FILE2
 ```
-- `-1`: nomor kolom *FILE1*
-- `-2`: nomor kolom *FILE2*
 - `-t`: karakter pemisah antarkolom
-- `-o`: format keluaran
+- `-1`: nomor kolom join untuk *FILE1*
+- `-2`: nomor kolom join untuk *FILE2*
 
 ## `diff`
 Membandingkan antara dua *file* per baris.
 ```bash
 diff [OPTION] FILE1 FILE2
 ```
-- `-u`: *unified*; keluaran termasuk konteks baris
+- `-u`: *unified*; keluaran beserta konteks
 - `-y`: *side-by-side*; keluaran dua kolom
-- `-r`: *recursive*; bandingkan direktori seisinya
-- `-w`: *white space*; abaikan semua *white space*
-
-
 
 ## `wc`
 Mencetak jumlah baris, kata, dan karakter dari suatu *file*.
@@ -247,8 +236,8 @@ Mencetak jumlah baris, kata, dan karakter dari suatu *file*.
 wc [OPTION] [FILE...]
 ```
 - `-c`: *char*; cetak jumlah karakter
-- `-w`: *word*; cetak jumlah kata
 - `-l`: *line*; cetak jumlah baris
+- `-w`: *word*; cetak jumlah kata
 
 
 # Ekspresi Reguler
