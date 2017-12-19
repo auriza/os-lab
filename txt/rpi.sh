@@ -17,8 +17,9 @@ sudo reboot
 ## APPS
 sudo apt update
 sudo apt upgrade
-sudo apt install htop tree w3m git
 sudo apt install mailutils
+sudo apt install htop tree w3m git bmon
+sudo apt install zip imagemagick libav-tools pandoc tesseract-ocr-ara espeak graphviz figlet
 
 ## APACHE
 sudo apt install apache2
