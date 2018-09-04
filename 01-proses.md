@@ -127,16 +127,16 @@ Berikut fungsi-fungsi pustaka dalam bahasa C yang dipakai untuk manajemen proses
 
 \small
 
-Fungsi      Pustaka         Keterangan
-------      --------        ----------
-`system()`  `stdlib.h`      Membuat proses *shell* untuk menjalankan perintah
-`exit()`    `stdlib.h`      Mengakhiri proses secara normal
-`exec()`    `unistd.h`      Mengganti *image* proses lama dengan yang baru
-`fork()`    `unistd.h`      Membuat proses *child* dengan cara duplikasi
-`wait()`    `sys/wait.h`    Menunggu proses *child* berganti status
-`pause()`   `unistd.h`      Menunggu sampai ada sinyal masuk
-`signal()`  `signal.h`      Menangani sinyal yang masuk
-`kill()`    `signal.h`      Mengirim sinyal ke sebuah proses
+| Fungsi     | Pustaka      | Keterangan                                        |
+| ---------- | :----------- | ------------------------------------------------- |
+| `system()` | `stdlib.h`   | Membuat proses *shell* untuk menjalankan perintah |
+| `exit()`   | `stdlib.h`   | Mengakhiri proses secara normal                   |
+| `exec()`   | `unistd.h`   | Mengganti *image* proses lama dengan yang baru    |
+| `fork()`   | `unistd.h`   | Membuat proses *child* dengan cara duplikasi      |
+| `wait()`   | `sys/wait.h` | Menunggu proses *child* berganti status           |
+| `pause()`  | `unistd.h`   | Menunggu sampai ada sinyal masuk                  |
+| `signal()` | `signal.h`   | Menangani sinyal yang masuk                       |
+| `kill()`   | `signal.h`   | Mengirim sinyal ke sebuah proses
 
 
 # `system()`
