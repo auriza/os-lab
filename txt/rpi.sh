@@ -61,7 +61,7 @@ rm -r micro*
 sudo apt install gdebi-core
 wget 'https://github.com/gohugoio/hugo/releases/download/v0.30.2/hugo_0.30.2_Linux-ARM.deb'
 sudo gdebi 'hugo_0.30.2_Linux-ARM.deb'
-<<--
+<<EOF
 ---
 title: "Hugo Start"
 date: 2017-11-14T15:50:20+07:00
@@ -74,10 +74,10 @@ Halaman ditulis menggunakan Markdown.
 # Inisialisasi Situs Baru
 
 ```sh
-hugo new site 'blog'
+hugo new site blog
 cd blog
 git init
-git submodule add 'https://github.com/MunifTanjim/minimo' themes/minimo
+git submodule add https://github.com/MunifTanjim/minimo themes/minimo
 cp themes/minimo/exampleSite/config.toml .
 ```
 
@@ -106,4 +106,4 @@ Buka laman di atas untuk melihat situs baru anda.
 
 Setiap kali menambahkan atau mengubah isi post, jalankan perintah `hugo` di
 atas untuk meng-generate perubahan isi situs.
--
+EOF

@@ -2,7 +2,7 @@
 title: Proses
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2017
+date: 2018
 theme: Dresden
 header-includes:
     - \usepackage{tikz}
@@ -11,22 +11,13 @@ header-includes:
 
 # Intro
 
-## Tim Praktikum
-
-- Auriza Rahmad Akbar
-- M Mukhibillah Asshidiqy
-- Kurnia Saputra
-- Lu William Hanugra
-- Selfi Qisthina
-
 ## Peraturan
 
 - Pakaian sopan, tidak ketat
-    - pelanggaran lebih dari 3 kali: sanksi sedang (nilai 0)
+    - pelanggaran 3 kali: sanksi sedang
 - Kehadiran minimal 80%
-- Toleransi terlambat 15 menit
+- Toleransi keterlambatan 20 menit
 - Tidak membawa makanan ke lab
-
 
 ---
 
@@ -35,13 +26,13 @@ header-includes:
 ## LMS
 
 - <https://lms.ipb.ac.id/course/view.php?id=154>
-    - *key*: `so2017`
+    - *key*: `so2018`
 - Buku acuan:
     - Silberschatz *et al.* 2013. *Operating System Concepts*. Ed ke-9.
-- Proporsi nilai praktikum:
-    - UTSP: 30%
-    - UASP: 30%
-    - Tugas: 40%
+- Proporsi nilai praktikum (30%):
+    - UTSP: 10%
+    - UASP: 10%
+    - Tugas: 10%
 
 
 # Proses
@@ -67,7 +58,7 @@ Misalkan kita ingin menjalankan program Firefox. Ada berapa cara?
 Dua cara:
 
 1. **CLI**: buka *shell*, lalu ketikkan perintah `firefox`.
-2. **GUI**: klik ikon Firefox pada menu aplikasi[^01-ff].
+2. **GUI**: klik ikon Firefox pada menu aplikasi.
 
 [^01-ff]: jika ikon diklik, program akan tetap dijalankan melalui *shell*; coba cek isi *file* `/usr/share/applications/firefox.desktop`.
 
@@ -112,10 +103,8 @@ Dua cara:
 ## Contoh *kernel*
 
 - UNIX
-    - BSD
-    - AIX
-    - HP-UX
-    - Solaris
+    - BSD, Darwin (macOS, iOS)
+    - IBM AIX, HP-UX, Oracle Solaris
     - Linux
 - Windows NT
 
@@ -123,7 +112,6 @@ Dua cara:
 
 - Bourne shell (`sh`)
 - Bourne-again shell (`bash`)
-- Korn shell (`ksh`)
 - Z shell (`zsh`)
 - Windows PowerShell
 
@@ -131,6 +119,24 @@ Dua cara:
 ## Bagaimana *shell* bisa membuat proses?
 
 **Tugas**: baca Silberschatz *et al.* (2013), hlm 116--118 sebagai tugas sekaligus materi praktikum pekan depan.
+
+
+## Manajemen Proses
+
+Berikut fungsi-fungsi pustaka dalam bahasa C yang dipakai untuk manajemen proses.
+
+\small
+
+Fungsi      Pustaka         Keterangan
+------      --------        ----------
+`system()`  `stdlib.h`      Membuat proses *shell* untuk menjalankan perintah
+`exit()`    `stdlib.h`      Mengakhiri proses secara normal
+`exec()`    `unistd.h`      Mengganti *image* proses lama dengan yang baru
+`fork()`    `unistd.h`      Membuat proses *child* dengan cara duplikasi
+`wait()`    `sys/wait.h`    Menunggu proses *child* berganti status
+`pause()`   `unistd.h`      Menunggu sampai ada sinyal masuk
+`signal()`  `signal.h`      Menangani sinyal yang masuk
+`kill()`    `signal.h`      Mengirim sinyal ke sebuah proses
 
 
 # `system()`
