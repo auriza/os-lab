@@ -2,7 +2,7 @@
 title: Fork, Wait
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2017
+date: 2018
 theme: Dresden
 ---
 

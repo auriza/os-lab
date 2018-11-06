@@ -2,7 +2,7 @@
 title: UNIX Shell
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2017
+date: 2018
 theme: Dresden
 ---
 
@@ -28,16 +28,16 @@ theme: Dresden
 
 - Lihat **Project 1**[^04-shell], kerjakan **Part I**, yaitu membuat *shell*
     - lengkapi contoh program berikut[^04-shc]
-- Kumpulkan di LMS dengan nama *file* `NIM_shell.c`
+- Kumpulkan di LMS dengan nama *file* `[NIM].c`
     - paling lambat setelah praktikum berakhir
 
 [^04-shell]: Silberschatz *et al.* (2013), *Operating System Concepts*, hlm 157--159
 [^04-shc]: <https://git.io/vycRv>
 
-## History Feature
+## UNIX Shell: Fitur History (Bonus)
 
 - Lanjutkan **Part II**, yaitu membuat fitur *history*
     - **opsional**, bonus nilai
-    - plagiasi akan mendapat sanksi nilai -100
-- Kumpulkan di LMS dengan nama *file* `NIM_shellhist.c`
-    - paling lambat besok pukul 06:00
+    - plagiasi akan mendapat sanksi nilai $-100$
+- Kumpulkan di LMS dengan nama *file* `[NIM].c`
+    - paling lambat besok pukul 22:00

@@ -2,7 +2,7 @@
 title: Thread
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2017
+date: 2018
 theme: Dresden
 header-includes:
     - \renewcommand{\figurename}{Gambar}
@@ -70,11 +70,11 @@ header-includes:
 
 # Contoh
 
-## Satu Thread Tanpa Argumen
+## Satu Thread
 
 ~~~c
-#include <pthread.h>
 #include <stdio.h>
+#include <pthread.h>
 
 void *hello(void *arg) {
     printf("hello\n");
@@ -82,54 +82,55 @@ void *hello(void *arg) {
 }
 
 int main() {
-    pthread_t thread;
-    pthread_create(&thread, NULL, hello, NULL);
-    pthread_join(thread, NULL);
+    pthread_t t;
+    pthread_create(&t, NULL, hello, NULL);
+    pthread_join(t, NULL);
     return 0;
 }
 ~~~
 
-## Dua Thread Tanpa Argumen
+## Dua Thread
 
 ~~~c
+...
+
 int main() {
-    pthread_t thread1;
-    pthread_t thread2;
+    pthread_t t1, t2;
 
-    pthread_create(&thread1, NULL, hello, NULL);
-    pthread_create(&thread2, NULL, hello, NULL);
+    pthread_create(&t1, NULL, hello, NULL);
+    pthread_create(&t2, NULL, hello, NULL);
 
-    pthread_join(thread1, NULL);
-    pthread_join(thread2, NULL);
+    pthread_join(t1, NULL);
+    pthread_join(t2, NULL);
 
     return 0;
 }
 ~~~
 
-## Banyak Thread Tanpa Argumen
+## N Thread
 
 ~~~c
 #define N 4
 
 int main() {
-    pthread_t thread[N];
+    pthread_t t[N];
     int i;
 
     for (i = 0; i < N; i++)
-        pthread_create(&thread[i], NULL, hello, NULL);
+        pthread_create(&t[i], NULL, hello, NULL);
 
     for (i = 0; i < N; i++)
-        pthread_join(thread[i], NULL);
+        pthread_join(t[i], NULL);
 
     return 0;
 }
 ~~~
 
-## Satu Thread Dengan Argumen
+## Satu Thread dengan Argumen
 
 ~~~c
-#include <pthread.h>
 #include <stdio.h>
+#include <pthread.h>
 
 void* hello(void* arg) {
     printf("hello from thread %s\n", (char*)arg);
@@ -137,45 +138,44 @@ void* hello(void* arg) {
 }
 
 int main() {
-    pthread_t thread;
-    pthread_create(&thread, NULL, hello, "0");
-    pthread_join(thread, NULL);
+    pthread_t t;
+    pthread_create(&t, NULL, hello, "0");
+    pthread_join(t, NULL);
     return 0;
 }
 ~~~
 
-## Dua Thread Dengan Argumen
+## Dua Thread dengan Argumen
 
 ~~~c
 int main() {
-    pthread_t thread1;
-    pthread_t thread2;
+    pthread_t t1, t2;
 
-    pthread_create(&thread1, NULL, hello, "0");
-    pthread_create(&thread2, NULL, hello, "1");
+    pthread_create(&t1, NULL, hello, "0");
+    pthread_create(&t2, NULL, hello, "1");
 
-    pthread_join(thread1, NULL);
-    pthread_join(thread2, NULL);
+    pthread_join(t1, NULL);
+    pthread_join(t2, NULL);
 
     return 0;
 }
 ~~~
 
-## Banyak Thread Dengan Argumen
+## N Thread dengan Argumen
 
 ~~~c
 #define N 4
 
 int main() {
-    pthread_t thread[N];
+    pthread_t t[N];
     char *id[N] = {"0", "1", "2", "3"};
     int i;
 
     for (i = 0; i < N; i++)
-        pthread_create(&thread[i], NULL, hello, id[i]);
+        pthread_create(&t[i], NULL, hello, id[i]);
 
     for (i = 0; i < N; i++)
-        pthread_join(thread[i], NULL);
+        pthread_join(t[i], NULL);
 
     return 0;
 }
@@ -219,7 +219,7 @@ int main() {
 - bisa?
 - sekarang gunakan 4 buah *thread* untuk menjumlahkan nilai semua elemen *array* A
 - pastikan pembagian kerja antara keempat *thread* seimbang, yaitu tiap *thread* memproses $\frac{N}{4}$ elemen
-- kumpulkan di LMS
+- kumpulkan di LMS, deadline akhir praktikum
 
 <!--
 

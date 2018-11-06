@@ -1,8 +1,8 @@
 ---
-title: UNIX Intro
+title: UNIX Command Line
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2017
+date: 2018
 theme: Dresden
 header-includes:
     - \renewcommand{\figurename}{Gambar}
@@ -12,12 +12,10 @@ header-includes:
 
 ## Mengapa CLI?
 
-- administrasi server
-    - hampir semua server berbasis UNIX
-    - perintah standar, meski beda OS
-    - otomatisasi dengan *shell script*
-- pilihan aplikasi lebih banyak
-- efektif dan efisien
+- administrasi server UNIX
+- perintah standar POSIX
+- antarmuka berbasis teks
+- otomatisasi dengan *shell script*
 
 ---
 
@@ -29,14 +27,7 @@ header-includes:
     - 1.2 GHz quad-core ARMv8 CPU
     - 1 GiB RAM
 - Raspbian GNU/Linux
-<!--
-- Raspberry Pi 1 Model B[^08-rpi1]
-    - 700 MHz *single-core* ARMv6 CPU
-    - 512 MiB RAM
--->
 
-[^08-rpi1]: <https://www.raspberrypi.org/products/model-b/>
-[^08-rpi2]: <https://www.raspberrypi.org/products/raspberry-pi-2-model-b/>
 [^08-rpi3]: <https://www.raspberrypi.org/products/raspberry-pi-3-model-b/>
 
 ---
@@ -59,18 +50,16 @@ header-includes:
 ## `ssh`
 Login ke komputer *remote*.
 ```bash
-ssh [OPTION] [USER@]HOST
+ssh [OPTION] USER@HOST
 ```
-- `-p`: *port* koneksi
-- `-X`: *X forwarding* untuk aplikasi GUI diaktifkan
+- `-X`: *X forwarding* untuk aplikasi GUI
 
 ## `echo`
 Menampilkan satu baris teks.
 ```bash
 echo [OPTION] [STRING]
 ```
-- `-n`: *newline* di akhir dihilangkan
-- `-e`: *escape* dengan *backslash* diaktifkan
+- `-n`: tanpa *newline* di akhir
 
 ## `hostname`
 Menampilkan nama *host* sistem.
@@ -84,7 +73,7 @@ Menampilkan informasi kernel sistem.
 ```bash
 uname [OPTION]
 ```
-- `-a`: (*all*) tampilkan semua informasi kernel
+- `-a`: *all*; semua info
 
 ## `uptime`
 Menampilkan berapa lama sistem sudah berjalan.
@@ -104,6 +93,8 @@ Menampilkan kalender.
 cal [[MONTH] YEAR]
 ```
 
+# Akun
+
 ## `whoami`
 Menampilkan nama *user* efektif.
 ```bash
@@ -111,15 +102,15 @@ whoami
 ```
 
 ## `who`
-Menampilkan siapa saja yang sedang login.
+Menampilkan siapa yang sedang login.
 ```bash
 who [OPTION]
 ```
-- `-q`: (*quantity*) jumlah *user* yang sedang login
+- `-q`: *quantity*; jumlah *user* yang sedang login
 - `-w`: *write status* untuk pesan (`+`, `-`, `?`)
 
 ## `w`
-Menampilkan siapa saja yang sedang login dan proses yang sedang dijalankannya.
+Menampilkan siapa yang sedang login dan apa yang dijalankannya.
 ```bash
 w [USER]
 ```
@@ -129,6 +120,20 @@ Menampilkan daftar waktu *user* terakhir kali *login*.
 ```bash
 last
 ```
+
+## `passwd`
+Mengganti *password* login.
+```bash
+passwd
+```
+
+## `logout`
+Keluar dari sistem.
+```bash
+logout
+```
+
+# Komunikasi
 
 ## `write`
 Mengirim pesan ke *user* lain yang sedang login.
@@ -159,83 +164,54 @@ talk USER@HOST [TTY]
 -->
 
 ## `mail`
-Membaca atau mengirim surat ke *user* lain.
+Membaca atau mengirim email ke *user* lain.
 ```bash
 mail [USER...]
 ```
 
 ---
 
-### Contoh: mengirim surat
+### Contoh: mengirim email
+
+\scriptsize
 
 ```
-auriza@raspi:~ $ mail mukhib
+pi@raspi:~ $ mail auriza
 Cc:
 Subject: Test
-Assalamu'alaikum...
-[Ctrl+D]
-
-auriza@raspi:~ $ mail mukhib kurnia
-Cc:
-Subject: Test 2
-Tolong surat ini langsung dihapus ya...
+Hello world!
 [Ctrl+D]
 ```
 
 ---
 
-### Contoh: membaca surat
+### Contoh: membaca, membalas, dan menghapus email
+
+\scriptsize
 
 ```
-mukhib@raspi:~ $ mail
-"/var/mail/mukhib": 2 messages 2 new
->N   1 Auriza Akbar   Tue Nov  7 01:15  16/431   Test
- N   2 Auriza Akbar   Tue Nov  7 01:20  15/420   Test 2
+auriza@raspi:~ $ mail
+"/var/mail/auriza": 1 message 1 new
+>N   1 pi@raspi       Tue Nov  6 14:54  15/422   Test
 
 ? print 1
 ...
 Subject: Test
-From: Auriza Akbar <auriza@raspi>
+From: pi@raspi
 
-Assalamu'alaikum...
-```
+Hello world!
 
----
-
-```
 ? reply 1
-To: auriza@raspi
-Subject: Re: Test
-
-Wa'alaikumussalam.
+...
+Hello too.
 [Ctrl+D]
 
-? print 2
-...
-Subject: Test 2
-From: Auriza Akbar <auriza@raspi>
+? delete 1
 
-Tolong surat ini langsung dihapus ya...
-
-? delete 2
 ? quit
 ```
 
-
-## `passwd`
-Mengganti *password* login.
-```bash
-passwd [OPTION] [USER]
-```
-- `-d`: (*delete*) hapus *password*
-- `-e`: (*expire*) buat *password* menjadi kadaluwarsa
-
-
-## `logout`
-Keluar dari sistem.
-```bash
-logout
-```
+# Lain-Lain
 
 ## `poweroff`
 Mematikan (*shutdown*) sistem.
@@ -249,42 +225,42 @@ Me-*restart* sistem.
 sudo reboot
 ```
 
-
-## Tombol *shortcut*
+## *Shortcut*
 
 ### `Tab`
 *auto-completion*
 
-### `Up` dan `Down`
-mengakses *history* perintah yang pernah dimasukkan
+### `Up`, `Down`
+mengakses riwayat perintah
 
 ### `Ctrl+D`
-mengakhiri teks (*end of file*, EOF)
+mengakhiri teks (EOF)
 
 ### `Ctrl+C`
-mengakhiri proses yang sedang berjalan
+mengakhiri proses
 
 ### `Ctrl+L`
 membersihkan layar
 
 ### `Ctrl+W`
-menghapus satu kata di belakang kursor
+menghapus satu kata ke belakang
 
 
-## Sumber Informasi Tambahan
+## Sumber Tambahan
 
 - UNIX commands list[^08-cmd]
 - Explain Shell[^08-esh]
-- Regular expression checker[^08-rgx]
+- CommandLineFu[^08-cfu]
 
 [^08-cmd]: <https://en.wikipedia.org/wiki/Template:Unix_commands>
 [^08-esh]: <http://explainshell.com>
-[^08-rgx]: <http://regexr.com/>
+[^08-rgx]: <http://regexr.com>
+[^08-cfu]: <https://www.commandlinefu.com>
 
+# Tugas
 
-## Tugas
+## Email
 
-- ganti *password* anda
-- kirim surat ke *user* `auriza`
+Kirim surat ke *user* `auriza`.
 
 <!-- TODO: add user mgmt: adduser, deluser, addgroup, etc. -->

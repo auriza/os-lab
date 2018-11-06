@@ -2,7 +2,7 @@
 title: Sinkronisasi Thread
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2017
+date: 2018
 theme: Dresden
 header-includes:
     - \renewcommand{\figurename}{Gambar}
@@ -12,27 +12,32 @@ header-includes:
 
 ## Critical Section
 
-> A **critical section** is a section of code that can be executed by at most **one process at a time**.
+> A **critical section** is a section of code that can be executed by at most **one thread at a time**.
 > The critical section exists to protect shared resources from multiple access.[^06-critsec]
 
-- contoh: mengubah variabel global, menulis ke *file*, dll.
-- solusi: sinkronisasi
+- contoh:
+    - mengubah variabel global
+    - mengubah *database*
+    - menulis ke *file*
+- proteksi dengan sinkronisasi
 
 [^06-critsec]: Jones (2008), *GNU/Linux Application Programming*, hlm 264.
 
 
 ## Sinkronisasi
 
-- untuk melindungi (mengunci) sebuah *critical section*
-    - hanya satu proses/*thread* dalam satu waktu yang dapat masuk
-- menggunakan *mutex lock* atau *semaphore*
+- melindungi (mengunci) sebuah *critical section*
+    - hanya satu *thread* dalam satu waktu yang dapat masuk
+- implementasi:
+    - *mutex lock*
+    - *semaphore*
 
 
 # Mutual Exclusion
 
 ## Mutex
 
-> Mutex is a key to a variable.
+> Mutex is a **key** to a variable.
 > One thread can have the key---modify the variable---at the time.
 > When finished, the thread gives (frees) the key to the next thread in the group.[^06-mutex]
 
@@ -45,6 +50,8 @@ header-includes:
 
 ## Fungsi Mutex
 
+\small
+
 ~~~c
 #include <pthread.h>
 
@@ -55,14 +62,20 @@ int pthread_mutex_unlock(pthread_mutex_t *mutex);
 int pthread_mutex_destroy(pthread_mutex_t *mutex);
 ~~~
 
+\normalsize
+
 - `init`: inisialisasi `mutex`
 - `lock`: mengunci *critical section*
-- `unlock`: melepaskan kunci *critical section*
+- `unlock`: melepas kunci *critical section*
 - `destroy`: menghapus `mutex`
 
 ## Latihan
 
 Apa yang salah dengan kode berikut ini? Perbaiki dengan menggunakan *mutex*!
+
+---
+
+\scriptsize
 
 ~~~c
 // counting to one million
@@ -73,11 +86,7 @@ Apa yang salah dengan kode berikut ini? Perbaiki dengan menggunakan *mutex*!
 #define T 4
 
 int count = 0;
-~~~
 
----
-
-~~~c
 void *counting(void *arg)
 {
     int i;
@@ -89,6 +98,8 @@ void *counting(void *arg)
 ~~~
 
 ---
+
+\scriptsize
 
 ~~~c
 int main()
@@ -111,45 +122,55 @@ int main()
 
 ## Semaphore
 
-- nilai *semaphore* `S` diinisialisasi dengan bilangan non-negatif
+- nilai *semaphore* `S`: bilangan non-negatif
 - terdapat dua operasi atomik yang bisa dilakukan pada *semaphore*, yaitu `wait` dan `post`[^06-sem]
 
-    ~~~c
-    wait(S) {
-        while (S == 0)
-            ; // busy wait
-        S--;
+\small
 
-    post(S) {
-        S++;
-    }
-    ~~~
+~~~c
+wait(S) {
+    while (S == 0)
+        ; // busy wait
+    S--;
+}
+
+post(S) {
+    S++;
+}
+~~~
 
 [^06-sem]: Silberschatz *et al.* (2013), *Operating System Concepts*, hlm 214.
 
 
 ## Jenis Semaphore
 
-1. *Counting semaphore*, nilai awal *semaphore* lebih dari 1
-2. *Binary semaphore*, nilai awal *semaphore* adalah 1 (sama fungsinya dengan *mutex*)
+1. *Counting semaphore*
+    - nilai awal *semaphore* > 1
+2. *Binary semaphore*
+    - nilai awal *semaphore* = 1
+    - sama fungsinya dengan *mutex*
 
 ## Fungsi Semaphore
+
+\small
 
 ~~~c
 #include <semaphore.h>
 
-int sem_init(sem_t *sem, int pshared, unsigned int value);
-int sem_wait(sem_t *sem);
-int sem_post(sem_t *sem);
-int sem_destroy(sem_t *sem);
+int sem_init(sem_t *S, int pshared, unsigned int value);
+int sem_wait(sem_t *S);
+int sem_post(sem_t *S);
+int sem_destroy(sem_t *S);
 ~~~
 
-- `init`: inisialisasi `sem` dengan nilai awal `value`
+\normalsize
+
+- `init`: inisialisasi `S` dengan nilai awal `value`
 - `wait`:
-    - jika `sem = 0` &rarr; *block*
-    - jika `sem > 0` &rarr; `sem--`, *continue*
-- `post`: `sem++`
-- `destroy`: menghapus `sem`
+    - selama `S = 0` &rarr; *busy wait*
+    - hingga `S > 0` &rarr; `S--`, *continue*
+- `post`: `S++`
+- `destroy`: menghapus `S`
 
 ## Latihan
 
@@ -161,6 +182,11 @@ Perbaiki latihan sebelumnya dengan menggunakan *semaphore*!
 ## Array Sum
 
 Identifikasi *critical section* dan perbaiki kode berikut ini supaya hasilnya benar.
+Kumpulkan di LMS.
+
+---
+
+\scriptsize
 
 ~~~c
 #include <stdio.h>
@@ -171,24 +197,22 @@ Identifikasi *critical section* dan perbaiki kode berikut ini supaya hasilnya be
 #define T 4
 
 int sum = 0;
-~~~
 
----
-
-~~~c
 void *array_sum(void *arg)
 {
-    int *array = (int*)arg;     // cast void* --> int*
+    int *A = (int*)arg;         // cast void* --> int*
     int i;
 
     for (i = 0; i < N/T; i++)
-        sum += array[i];
+        sum += A[i];
 
     pthread_exit(NULL);
 }
 ~~~
 
 ---
+
+\scriptsize
 
 ~~~c
 int main()
@@ -209,3 +233,68 @@ int main()
     return 0;
 }
 ~~~
+
+# Tugas Bonus
+
+## Pi Approximation
+
+$$ \pi \approx \int_0^1 \frac{4}{1+x^2} dx $$
+
+- integrasi numerik dengan aturan *midpoint*
+- lihat ilustrasinya di WolframAlpha
+
+\tiny
+
+<http://www.wolframalpha.com/input/?i=midpoint+rule+4%2F(1%2Bx^2)+from+0+to+1+with+5+intervals>
+
+
+## Pi Approximation
+
+- paralelkan program berikut dengan 4 *thread*
+- berikan komentar bagian *critical section*
+- berikan komentar pada baris teratas:
+    - nama dan NIM
+    - tipe prosesor
+    - waktu eksekusi program *single-threaded* ($t_s$)
+    - waktu eksekusi program *multithreaded* ($t_p$)
+    - *speedup* ($s = \frac{t_s}{t_p}$) dan efisiensi
+    - simpulan
+- kumpulkan dalam satu berkas `.c`
+- plagiat: nilai `-100`
+
+---
+
+\tiny
+
+```c
+#include <stdio.h>
+#include <math.h>
+#include <time.h>
+
+int main()
+{
+    int             a, b;
+    long long       n, i;
+    long double     x, y, dx, area;
+    struct timespec t1, t2;
+
+    n  = 100000000;                     // number of intervals (rectangles)
+    a  = 0;                             // integral lower limit
+    b  = 1;                             // integral upper limit
+    dx = (double) (b-a) / n;            // interval's width
+    area = 0.0;                         // sum of midpoint area
+
+    clock_gettime(CLOCK_REALTIME, &t1);
+    for (i = 0; i < n; i++) {
+        x = a + (i + 0.5) * dx;         // interval's midpoint
+        y = (4.0 / (1.0 + x*x));        // interval's height --> f(x) = 4 / (1+x^2)
+        area += y * dx;                 // interval's area
+    }
+    clock_gettime(CLOCK_REALTIME, &t2);
+
+    printf("   Pi: % .16Lf\n", area);
+    printf("Error: % .16Lf\n", area - M_PI);
+    printf(" Time: % .3fs\n", (t2.tv_sec - t1.tv_sec) + (t2.tv_nsec - t1.tv_nsec)/1e9);
+    return 0;
+}
+```

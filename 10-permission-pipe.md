@@ -2,7 +2,7 @@
 title: Permission, Link, dan Stream
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2017
+date: 2018
 theme: Dresden
 header-includes:
     - \renewcommand{\figurename}{Gambar}
@@ -55,7 +55,7 @@ chown [OPTION] OWNER[:GROUP] FILE
 
 ---
 
-![Mode akses publik](img/chown-chmod.png)
+![`chown` dan `chmod`](img/chown-chmod.png)
 
 ## `chmod`
 Mengubah mode *permission* suatu *file*.

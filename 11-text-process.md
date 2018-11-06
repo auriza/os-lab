@@ -2,7 +2,7 @@
 title: Pencarian dan Pemrosesan Teks
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2017
+date: 2018
 theme: Dresden
 header-includes:
     - \renewcommand{\figurename}{Gambar}
@@ -97,6 +97,7 @@ editor [OPTION] [FILE]...
 - `^O`: *write-out*; simpan *file*
 - `^X`: *exit*
 
+<!--
 ## `micro`
 Editor teks yang intuitif dan mudah dipakai, penerus '`nano`'.
 ```bash
@@ -106,6 +107,7 @@ micro [FILE]...
 - `^Z`: *undo*
 - `^S`: *save*
 - `^Q`: *quit*
+-->
 
 ## `vi`
 Editor teks untuk *programmer*.

@@ -2,7 +2,7 @@
 title: File dan Direktori
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2017
+date: 2018
 theme: Dresden
 ---
 
@@ -22,14 +22,13 @@ pwd
 ```
 
 ## `cd`
-Mengganti direktori.
+Mengganti direktori (*default* ke direktori *home*).
 ```bash
-cd [DIRECTORY]
+cd [DIR]
 ```
-Jika tanpa parameter, *default*-nya ke direktori *home* pengguna (`~`).
 
 ## `ls`
-Menampilkan list isi direktori.
+Menampilkan daftar isi direktori.
 ```bash
 ls [OPTION] [FILE]
 ```
@@ -48,7 +47,7 @@ Jika `FILE` belum ada, maka `touch` akan membuat `FILE` kosong.
 ## `mkdir`
 Membuat direktori.
 ```bash
-mkdir [OPTION] DIRECTORY
+mkdir [OPTION] DIR
 ```
 - `-p`: *parent*; buat direktori *parent* jika diperlukan
 
@@ -56,50 +55,52 @@ mkdir [OPTION] DIRECTORY
 Menyalin *file* dan direktori.
 ```bash
 cp [OPTION] SOURCE DEST
-cp [OPTION] SOURCES... DIRECTORY
+cp [OPTION] SOURCES... DIR
 ```
-- `-r`: *recursive*; salin direktori seisinya secara rekursif
-- `-f`: *force*; tanpa konfirmasi jika terjadi *overwrite*
-- `-i`: *interactive*; ada konfirmasi sebelum *overwrite*
+- `-r`: *recursive*; salin direktori seisinya
+- `-f`: *force*; tanpa konfirmasi jika *overwrite*
+- `-i`: *interactive*; konfirmasi sebelum *overwrite*
 
 ## `mv`
 Memindahkan (mengganti nama)  *file*.
 ```bash
 mv [OPTION] SOURCE DEST
-mv [OPTION] SOURCES... DIRECTORY
+mv [OPTION] SOURCES... DIR
 ```
-- `-f`: *force*; tanpa konfirmasi jika terjadi *overwrite*
-- `-i`: *interactive*; ada konfirmasi sebelum *overwrite*
+- `-f`: *force*; tanpa konfirmasi jika *overwrite*
+- `-i`: *interactive*; konfirmasi sebelum *overwrite*
 
 ## `rm`
 Menghapus *file* atau direktori.
 ```bash
 rm [OPTION] FILE...
 ```
-- `-r`: *recursive*; hapus direktori seisinya secara rekursif
-- `-f`: *force*; tanpa konfirmasi dan abaikan *error*
-- `-i`: *interactive*; meminta konfirmasi setiap kali menghapus
+- `-r`: *recursive*; hapus direktori seisinya
+- `-f`: *force*; tanpa konfirmasi jika *error*
+- `-i`: *interactive*; konfirmasi sebelum menghapus
 
 ## `rmdir`
 Menghapus direktori kosong.
 ```bash
-rmdir [OPTION] DIRECTORY...
+rmdir [OPTION] DIR...
 ```
-- `-p`: *parent*; hapus beserta *parent*-nya
-    - misal: '`rmdir -p a/b/c`' sama dengan '`rmdir a/b/c a/b a`'
+- `-p`: *parent*; hapus beserta direktori *parent*-nya
 
 ## `tree`
 Menampilkan isi direktori dalam format *tree*.
 ```bash
-tree [OPTION] [DIRECTORY...]
+tree [OPTION] [DIR...]
 ```
 - `-L N`: level kedalaman direktori
 - `-h`: *human-readable*; format ukuran
 
 ## *Dotfile*
-*File* yang namanya diawali dengan tanda titik. Secara umum, *dotfile* tidak akan terlihat (*hidden*). Biasanya digunakan untuk menyimpan konfigurasi program.
 
-## Simbol
+- *File* yang namanya diawali dengan titik
+- *Dotfile* tidak akan terlihat (*hidden*)
+- Biasa dipakai untuk nama *file* konfigurasi
+
+## Simbol Direktori
 
 ### `~`
 direktori *home* pengguna (`/home/$USER/`)
