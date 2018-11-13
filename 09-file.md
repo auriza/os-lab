@@ -129,10 +129,9 @@ ditulis relatif terhadap posisi saat ini; contoh: '`../etc`'
     - buat direktori `public_html`
 - Unduh templat
     - masuk ke direktori tersebut
-    - unduh dengan '`wget`' templat resume berikut:
-        - <https://raw.githubusercontent.com/auriza/os-lab/master/txt/bio.html>
-    - ubah nama *file* menjadi `resume.html`
+    - salin *file* `/home/auriza/resume.html` ke sini
 - Edit dan keluaran
-    - edit *file* dengan '`editor`' sesuai dengan data diri anda
+    - edit *file* dengan `editor` sesuai dengan data diri anda
     - hasilnya bisa dilihat pada laman:
+        - <http://172.18.12.12/~$USER/resume.html>
         - <http://os.apps.cs.ipb.ac.id/~$USER/resume.html>

@@ -182,6 +182,8 @@ stdin  +--> |   PROSES   |
     rev < now.txt > rev.txt
     ```
 
+<!--
+
 ## Tugas Bonus
 
 Buatlah sebuah blog dengan menggunakan '`hugo`'.
@@ -189,3 +191,5 @@ Buatlah sebuah blog dengan menggunakan '`hugo`'.
 Panduannya lihat di:
 
 - <http://os.apps.cs.ipb.ac.id/~auriza/blog/posts/hugo-start/>
+
+-->
