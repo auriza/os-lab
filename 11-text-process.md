@@ -1,5 +1,5 @@
 ---
-title: Pencarian dan Pemrosesan Teks
+title: Pencarian *File* dan Pemrosesan Teks
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
 date: 2018
@@ -8,7 +8,7 @@ header-includes:
     - \renewcommand{\figurename}{Gambar}
 ---
 
-# Pencarian
+# Pencarian *File*
 
 ## `man`
 Mencari halaman manual suatu program, fungsi, dan sebagainya.
@@ -64,16 +64,6 @@ Mengubah tiap baris masukan menjadi argumen suatu perintah.
 # temukan semua file backup (.bak), lalu hapus
 find . -name '*.bak' | xargs rm
 ```
-
-## `grep`
-Mencetak baris teks yang cocok dengan suatu pola.
-```bash
-grep [OPTION] 'PATTERN' FILE
-```
-- `-c`: *count*; tampilkan jumlah baris yang cocok
-- `-i`: *ignore-case*
-- `-r`: rekursif
-- `-v`: *invert*; kebalikan dari pola yang diberikan
 
 # Editor Teks
 
@@ -190,6 +180,17 @@ tr [OPTION] SET1 [SET2]
 - `-d`: *delete*; hapus karakter pada *SET1*
 - `-s`: *squeeze*; hapus karakter yang berulang pada *SET1*
 
+## `grep`
+Mencetak baris teks yang cocok dengan suatu pola.
+```bash
+grep [OPTION] 'PATTERN' FILE
+```
+- `-c`: *count*; tampilkan jumlah baris yang cocok
+- `-i`: *ignore-case*
+- `-r`: rekursif
+- `-v`: *invert*; kebalikan dari pola yang diberikan
+- `-E`: *extended regular expression*
+
 ## `sed`
 *Stream editor*, manipulasi baris teks dengan *regular expression*.
 ```bash
@@ -197,6 +198,7 @@ sed [OPTION] 's/SEARCH/REPLACE/' [FILE]
 ```
 - `-e`: *execute*; tambahkan perintah untuk dieksekusi
 - `-i`: *in-place*; edit *file* langsung
+- `-E`: *extended regular expression*
 
 ## `cut`
 Mengambil karakter/kolom tertentu dari tiap baris teks.
@@ -326,4 +328,6 @@ Latihan dan informasi lebih lanjut, kunjungi <http://regexr.com>.
 
 ## Tugas
 
-UNIX Text Processing Contest 2017^[<https://www.hackerrank.com/unix-text-processing-2017>]
+UNIX Text Processing Contest 2018^[<https://www.hackerrank.com/csipb-unix-text-processing-2018>]
+
+Nilai maksimum: **150**
