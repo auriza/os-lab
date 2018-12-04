@@ -13,7 +13,7 @@ header-includes:
 ---
 
 
-# Kompresi
+# Kompresi File
 
 ## `tar`
 Menyimpan dan mengekstrak *file* arsip (**_t_**_ape_ **_ar_**_chive_).
@@ -67,7 +67,7 @@ gunzip < DIR.tar.gz | tar -x
 tar -cz DIR -f DIR.tar.gz
 
 # extract
-tar -xz -f DIR.tar.gz
+tar -xzf DIR.tar.gz
 ```
 
 
@@ -86,19 +86,11 @@ unzip ZIPFILE [-d EXDIR]
 ```
 - `-d`: *directory*; ekstrak ke direktori berikut
 
-## `gpg`
-Enkripsi dan tanda tangan digital.
-```sh
-gpg [OPTION] [FILE]
-```
-- `-c`: *encrypt*; enkripsi dengan kunci simetris
-- `-d`: *decrypt*; dekripsi
 
-
-# Konversi
+# Konversi File
 
 ## `convert`
-Konversi format citra, ukuran, *blur*, *crop*, dan sebagainya.
+Konversi citra: format, ukuran, efek, dan sebagainya.
 ```sh
 convert INFILE [OPTION] OUTFILE
 ```
@@ -125,10 +117,10 @@ convert rpi.jpg -paint 5 rpi-paint.jpg
 ![](img/rpip.jpg){width=33%}\
 
 
-## `avconv`
+## `ffmpeg`
 Konversi audio dan video.
 ```sh
-avconv [IN-OPTION] -i INFILE [OUT-OPTION] OUTFILE
+ffmpeg [IN-OPTION] -i INFILE [OUT-OPTION] OUTFILE
 ```
 - `-b`: *bitrate*
 - `-f`: *frame rate*
@@ -140,48 +132,41 @@ avconv [IN-OPTION] -i INFILE [OUT-OPTION] OUTFILE
 ## `pandoc`
 Konversi Markdown ke format lainnya (HTML, LaTeX, PDF).
 ```sh
-pandoc [OPTION] [FILE...]
+pandoc [OPTION] [INFILE...] -o OUTFILE
 ```
-- `-s`: *standalone*; dokumen utuh
-- `-t`: *to*; format keluaran berikut: `hmtl5`, `beamer`, `revealjs`, ...
-- `-o`: *output*; tulis keluaran ke *file* berikut
-- `--mathjax`: tampilkan persamaan matematik LaTeX
+- `-s`: *standalone*; dokumen HTML utuh
+- `-t`: *to*; format keluaran
 
 ---
 
 ```sh
-echo "# Heading" | pandoc
-# <h1 id="heading">Heading</h1>
-
-echo "# Heading" | pandoc -t latex
-# \section{Heading}\label{heading}
-
-pandoc -s file.md -o file.html
+pandoc file.md -o file.html
 
 pandoc file.md -o file.pdf
 
-pandoc -t beamer slide.md -o slide.pdf
+pandoc slide.md -t beamer -o slide.pdf
 ```
 
 
 ## `tesseract`
 Konversi citra ke teks (*optical character recognition*).
 ```sh
-tesseract IMAGEFILE OUTFILE
+tesseract [OPTION] INFILE OUTFILE
 ```
-- `-l`: *language*; gunakan bahasa berikut (`ind`, `ara`, ...)
+- `-l`: *language*; gunakan bahasa berikut
 
 ---
 
+\centering
 ![](img/shalat.jpg){width=30%}\
 
 \tiny(<https://raw.githubusercontent.com/auriza/os-lab/master/img/shalat.jpg>)
 \normalsize
 
 ```bash
-tesseract -l ind shalat.jpg stdout
-# Jagalah shalat waij dan (terutama) shalat 'Ashr
-# Quran . Com/21238
+tesseract shalat.jpg stdout
+# Jagalah shalat wajib dan (terutama) shalat ‘Ashr
+# quran. com/2/238
 
 tesseract -l ara shalat.jpg stdout
 ```
@@ -189,7 +174,6 @@ tesseract -l ara shalat.jpg stdout
 \textarabic{حافظوا على الصلوات}
 
 \textarabic{والصلاة الوسطى}
-
 
 ## `espeak`
 Konversi teks ke suara (*speech synthesizer*).
@@ -199,21 +183,15 @@ espeak [OPTION] [WORDS]
 - `-p`: *pitch*; ketebalan suara (0--99)
 - `-s`: *speed*; kecepatan kata per menit
 - `-v`: *voice*; jenis suara (`en`, `id`, `fr`, ...)
-- `-w`: *wave*; keluaran ke *file* WAV berikut
 
 ---
 
 ```bash
-# English default voice
 espeak "Hello world"
 
-# Indonesian voice
 espeak -v id "Institut Pertanian Bogor"
 
-# make an audiobook and publish it
-man gittutorial | espeak -w git.wav
-avconv -i git.wav git.mp3
-mv git.mp3 ~/public_html
+man gittutorial | espeak --stdout | ffmpeg -i - git.mp3
 ```
 
 ## `dot`
@@ -241,40 +219,6 @@ dot -Tpng unix.dot > unix.png
 ![](img/unix.png){width=60%}\
 \endgroup
 
-
-## `figlet`
-Konversi teks ke karakter besar.
-```sh
-figlet [OPTION] [MESSAGE]
-```
-- `-c`: *center*; rata tengah
-- `-f`: *font*; pilih *font* berikut
-- `-w`: *width*; atur lebar teks
-
----
-
-```bash
-figlet "Hello"
-```
-```
- _   _      _ _
-| | | | ___| | | ___
-| |_| |/ _ \ | |/ _ \
-|  _  |  __/ | | (_) |
-|_| |_|\___|_|_|\___/
-
-```
-```bash
-
-figlet -f block "Hello"
-```
-```
-_|    _|            _|  _|
-_|    _|    _|_|    _|  _|    _|_|
-_|_|_|_|  _|_|_|_|  _|  _|  _|    _|
-_|    _|  _|        _|  _|  _|    _|
-_|    _|    _|_|_|  _|  _|    _|_|
-```
 
 # Info Sistem
 
@@ -370,12 +314,5 @@ vmstat [OPTION] [DELAY]
 - `-s`: *stat*; statistik memori
 - `-w`: *wide*; mode tampilan lebar
 - `-S M`: satuan dalam MiB
-
-## `bmon`
-Monitor *bandwidth* jaringan.
-```sh
-bmon
-```
-
 
 # \textarabic{شكرا}

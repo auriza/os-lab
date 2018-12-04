@@ -135,15 +135,15 @@ Menampilkan bagian awal *file* (*default*: 10 baris).
 ```bash
 head [OPTION] [FILE]
 ```
-- `-b`: *bytes*; tampilkan sekian *byte* awal
-- `-n`: *lines*; tampilkan sekian baris awal
+- `-c`: *chars*; tampilkan sekian karakter pertama
+- `-n`: *lines*; tampilkan sekian baris pertama
 
 ## `tail`
 Menampilkan bagian akhir *file* (*default*: 10 baris).
 ```bash
 tail [OPTION] [FILE]
 ```
-- `-b`: *bytes*; tampilkan sekian *byte* terakhir
+- `-c`: *chars*; tampilkan sekian karakter terakhir
 - `-n`: *lines*; tampilkan sekian baris terakhir
 
 <!--
@@ -161,6 +161,9 @@ sort [OPTION] [FILE]
 ```
 - `-n`: *numeric*; urutkan secara numerik
 - `-r`: *reverse*; urutkan terbalik
+- `-k`: *key*; urutkan berdasarkan kolom ke-sekian
+- `-t`: karakter pemisah antarkolom
+
 
 ## `uniq`
 Menghilangkan baris teks yang berulang.
@@ -176,7 +179,6 @@ Translasi karakter dari set pertama ke set kedua.
 ```bash
 tr [OPTION] SET1 [SET2]
 ```
-- `-c`: *complement*; gunakan komplemen dari *SET1*
 - `-d`: *delete*; hapus karakter pada *SET1*
 - `-s`: *squeeze*; hapus karakter yang berulang pada *SET1*
 
@@ -185,11 +187,11 @@ Mencetak baris teks yang cocok dengan suatu pola.
 ```bash
 grep [OPTION] 'PATTERN' FILE
 ```
-- `-c`: *count*; tampilkan jumlah baris yang cocok
+- `-c`: *count*; tampilkan jumlah baris
 - `-i`: *ignore-case*
 - `-r`: rekursif
 - `-v`: *invert*; kebalikan dari pola yang diberikan
-- `-E`: *extended regular expression*
+- `-E`: *extended regex*
 
 ## `sed`
 *Stream editor*, manipulasi baris teks dengan *regular expression*.
@@ -198,15 +200,15 @@ sed [OPTION] 's/SEARCH/REPLACE/' [FILE]
 ```
 - `-e`: *execute*; tambahkan perintah untuk dieksekusi
 - `-i`: *in-place*; edit *file* langsung
-- `-E`: *extended regular expression*
+- `-E`: *extended regex*
 
 ## `cut`
 Mengambil karakter/kolom tertentu dari tiap baris teks.
 ```bash
 cut OPTION [FILE]
 ```
-- `-c`: *char*; cetak karakter berikut
-- `-f`: *field*; cetak kolom berikut
+- `-c`: *char*; cetak karakter ke-sekian
+- `-f`: *field*; cetak kolom ke-sekian
 - `-d`: *delimiter*; pemisah antarkolom
 
 ## `paste`
@@ -218,13 +220,13 @@ paste [OPTION] [FILE...]
 - `-s`: *serial*; gabungkan isi *file* menjadi sebaris
 
 ## `join`
-Menggabungkan baris dari dua *file* berdasarkan kolom bersama.
+Menggabungkan baris dari dua *file* berdasarkan satu kolom *join*.
 ```bash
 join [OPTION] FILE1 FILE2
 ```
+- `-1`: nomor kolom *join* untuk *FILE1*
+- `-2`: nomor kolom *join* untuk *FILE2*
 - `-t`: karakter pemisah antarkolom
-- `-1`: nomor kolom join untuk *FILE1*
-- `-2`: nomor kolom join untuk *FILE2*
 
 ## `diff`
 Membandingkan antara dua *file* per baris.

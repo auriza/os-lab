@@ -16,10 +16,9 @@ Menampilkan cuplikan informasi proses yang sedang berjalan.
 ```bash
 ps [OPTION]
 ```
-- `-e`: *every*; semua proses
-- `-F`: *full*; format ekstra lengkap
-- `-L`: LWP; tampilkan info *thread*
-- `--forest`: format pohon proses
+- `-A`: *all*; tampilkan semua proses
+- `-F`: *full*; tampilkan format lengkap
+- `-L`: *light-weight process*; tampilkan info *thread*
 
 <!--
 ---
@@ -32,57 +31,52 @@ Menampilkan pohon proses.
 ```bash
 pstree [OPTION] [PID,USER]
 ```
-- `-n`: *numeric*; urutkan berdasarkan ID proses
-- `-p`: PID; tampilkan ID proses
+- `-n`: *numeric*; urutkan berdasarkan PID
+- `-p`: tampilkan PID
 
-
-## `top`
-Memonitor proses.
-```bash
-top [OPTION]
-```
-- `-u USER`: proses milik *USER* saja
-- `-p PID`: proses *PID* saja
-
-## `htop`
+## `top`, `htop`
 Memonitor proses secara interaktif.
 ```bash
 htop [OPTION]
 ```
-- `-u USER`: proses milik *USER* saja
-- `-p PID`: proses *PID* saja
+- `-u USER`: tampilkan proses milik *USER*
+- `-p PID`: tampilkan proses *PID*
 
 ---
 
-: Penjelasan kolom `htop`[^12-htop]
+: Atribut proses[^12-htop]
 
-Kolom       Keterangan
+Atribut     Keterangan
 -----       -----
 `PID`       ID proses
 `USER`      pemilik proses
 `PR`, `NI`  prioritas, nilai *nice*
-`VIRT`      ukuran memori virtual (keseluruhan proses)
+`VIRT`      ukuran memori virtual
 `RES`       ukuran memori residen (fisik)
-`SHR`       ukuran memori yang bisa di-*share*
+`SHR`       ukuran memori *shared*
 `S`         status proses
             - `R`: *running*
-            - `S`: *sleeping* (*idle*)
-            - `D`: *disk waiting*
+            - `S`: *sleeping*
+            - `D`: *waiting for disk*
             - `T`: *stopped*
 
 [^12-htop]: *lihat* '`man htop`'
 
 ## `pidof`
-Mendapatkan PID dari program yang sedang berjalan.
+Mendapatkan PID dari nama program yang sedang berjalan.
 ```bash
 pidof PROGRAM
 ```
 
 ## `kill`
-Mengirim sinyal ke suatu proses (*default* `SIGTERM`).
+Mengirim sinyal ke suatu proses (*default*: `SIGTERM`).
 ```bash
-kill [-SIGNAL] PID...
+kill [-SIG] PID...
 ```
+- `-INT`
+- `-KILL`
+- `-STOP`
+- `-CONT`
 
 ---
 
@@ -98,17 +92,16 @@ pmap PID
 ## `lsof`
 Menampilkan daftar *file* yang sedang dibuka oleh proses.
 ```bash
-lsof [-p PID]
+lsof [-p PID] [FILENAME...]
 ```
 
-
 ## `nice`
-Menjalankan program dengan nilai *nice*[^12-nice] tertentu (*default*: 10).
+Menjalankan program dengan prioritas *nice*[^12-nice] tertentu (*default*: 10).
 ```bash
 nice [-n NICE] COMMAND
 ```
 
-[^12-nice]: nilai *nice* antara -20 (prioritas tinggi) sampai +19 (prioritas rendah)
+[^12-nice]: nilai *nice* antara -20 (prioritas tinggi) sampai 19 (prioritas rendah)
 
 ## `renice`
 Mengubah prioritas proses yang sudah berjalan.
@@ -149,9 +142,11 @@ prlimit [OPTION] COMMAND
 
 # Job
 
-## Status Job
+## Job
 
-![Status *job*](img/linux-jobs-control.png)
+*Job*: kumpulan proses yang berjalan bersama dalam satu *shell*.
+
+![*Job state*](img/linux-jobs-control.png){width=75%}
 
 
 ## Proses Background
@@ -180,7 +175,7 @@ bg %JOB
 ```
 
 ## `at`
-Menjadwalkan *job* untuk dijalankan di masa depan.
+Menjadwalkan *job* untuk dijalankan kemudian.
 ```bash
 at HH:MM [YYYY-MM-DD]
 ```
@@ -210,7 +205,7 @@ at HH:MM [YYYY-MM-DD]
 ```bash
 # copy file '/etc/timezone' ke direktori ini
 ...
-# ubah nama file 'timezone' menjadi 'tz'
+# ubah nama file 'timezone' menjadi 'tz.txt'
 ...
 # list isi direktori ini
 ...
@@ -230,6 +225,8 @@ at HH:MM [YYYY-MM-DD]
 # temukan file pada home anda yang ukurannya > 200 MB
 ...
 # temukan file pada home anda yang diubah < 3 hari
+...
+# temukan file pada home anda yang diakses > 30 hari
 ...
 ```
 
@@ -251,7 +248,7 @@ at HH:MM [YYYY-MM-DD]
 ---
 
 ```bash
-# jalankan `cat /dev/random > rand` di background
+# jalankan `cat /dev/random > rand.txt` di background
 ...
 # tampilkan daftar job
 ...
@@ -270,8 +267,16 @@ echo hostname uname date cal who
 cd pwd ls touch
 cp mv rm mkdir rmdir
 chmod ln
-locate find wc grep
-cat head tail sort uniq cut tr sed
+locate find wc
+cat head tail sort uniq cut tr grep sed
 ps nice renice pidof kill
 & jobs fg bg
 ```
+
+## Aturan
+
+- HP silent, taruh di dalam tas; tas taruh depan
+- tidak membawa apapun di meja
+- boleh membuka materi di LMS atau GitLab IPB
+    - <http://code.cs.ipb.ac.id/auriza/os-lab>
+- pelanggaran (mencontek, kerjasama, berisik, dll): nilai **0**
