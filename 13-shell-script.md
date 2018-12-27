@@ -12,36 +12,69 @@ theme: Dresden
 - berguna untuk:
     - pemrosesan teks
     - otomatisasi administrasi sistem
-
+    - contoh *script* untuk instalasi lab:
+        - <https://bit.ly/2CksAGQ>
 
 ## Contoh
-```
-$ cat > hello
-#!/bin/sh
-echo "Hello world"
-exit 0
-^D
 
-$ chmod +x hello
-
-$ ./hello
-Hello world
-```
+1. Buat *file* teks `hello` yang berisi:
+    ```sh
+    #!/bin/sh
+    echo "Hello world, $USER"
+    exit 0
+    ```
+2. Berikan *permission* untuk *execute*
+    ```sh
+    $ chmod +x hello
+    ```
+3. Jalankan program `hello`
+    ```sh
+    $ ./hello
+    ```
 
 ## Referensi
 
 - `man sh`{.sh}
-- <http://wiki.bash-hackers.org>
-- <http://www.commandlinefu.com>
+- [DevHints.io](https://devhints.io/bash)
+- [CommandLineFu.com](https://www.commandlinefu.com/commands/browse/sort-by-votes)
 
-# Ekspansi
+
+# Parameter
+
+## Variabel
+
+```sh
+# no space before/after `=` assignment!
+fname="Steve"
+lname="Bourne"
+
+echo $fname
+
+echo "$fname $lname"
+
+echo "${lname}, ${fname}"
+```
+
+## `read`
+Membaca satu baris masukan.
+```sh
+read NAME...
+```
+
+```sh
+
+read input
+  # <ketikkan masukan>
+
+echo $input
+```
 
 ## *Pathname Expansion*
 
 - `*`{.sh}: nol atau lebih karakter apapun
-- `?`{.sh}: tepat satu karakter apapun
-- `[...]`{.sh}: tepat satu karakter di dalam *range*
-- `[!...]`{.sh}: tepat satu karakter selain dalam *range*
+- `?`{.sh}: satu karakter apapun
+- `[...]`{.sh}: satu karakter di dalam *range*
+- `[!...]`{.sh}: satu karakter selain dalam *range*
 
 ## *Pathname Expansion*
 
@@ -119,14 +152,13 @@ Mengevaluasi ekspresi aritmatika dan mengembalikan keluarannya.
 
 ```sh
 
-x=5
-y=3
+x=5; y=3
 
-echo $((x + y)) $((x * y)) $((x / y)) $((x % y))
-  # 8 15 1 2
+echo $((x + y))  $((x * y))  $((x / y))  $((x % y))
 
-echo $((x > y)) $((x == y)) $((x > y && y > 0))
-  # 1 0 1
+echo $((x > y))  $((x == y))  $((x > y && y > 0))
+
+echo $((RANDOM%100))
 ```
 
 ## Parameter Khusus
@@ -141,6 +173,21 @@ echo $((x > y)) $((x == y)) $((x > y && y > 0))
 - `$!`{.sh}: PID proses *background* terakhir
 - `$$`{.sh}: PID proses *shell*
 
+
+# Kontrol Aliran
+
+
+## Kondisional
+
+```sh
+if ...
+    then ...
+elif ...
+    then ...
+else
+    ...
+fi
+```
 
 ## `[`
 Mengevaluasi ekspresi kondisional.
@@ -172,52 +219,6 @@ Mengevaluasi ekspresi kondisional.
   # 0 (true)
 ```
 
-## `seq`
-Mencetak sekuens angka, berguna untuk *looping*.
-```sh
-seq [FIRST [INCREMENT]] LAST
-```
-
-```sh
-
-seq 10
-  # 1 2 3 4 5 6 7 8 9 10
-
-seq 1 2 10
-  # 1 3 5 7 9
-```
-
-## `read`
-Membaca satu baris masukan.
-```sh
-read NAME...
-```
-
-```sh
-
-read input
-  # <ketikkan: hello>
-
-echo $input
-  # hello
-```
-
-
-# Kontrol Aliran
-
-
-## Percabangan
-
-```sh
-if ...
-    then ...
-elif ...
-    then ...
-else
-    ...
-fi
-```
-
 ## Kasus
 
 ```sh
@@ -235,6 +236,21 @@ esac
 for NAME in WORDS
     do ...
 done
+```
+
+## `seq`
+Mencetak sekuens angka, berguna untuk *looping*.
+```sh
+seq [FIRST [INCREMENT]] LAST
+```
+
+```sh
+
+seq 10
+  # 1 2 3 4 5 6 7 8 9 10
+
+seq 1 2 10
+  # 1 3 5 7 9
 ```
 
 ## Perulangan
@@ -261,7 +277,7 @@ NAME () {
 # Contoh
 
 
-## Percabangan
+## Kondisional
 
 ```sh
 #!/bin/sh
@@ -488,17 +504,15 @@ michaeln
 #!/bin/sh
 # diff userlist vs usermail
 
-cat auriza.mbox | grep 'From ' | cut -f2 -d' ' |
-    cut -f1 -d'@' | sort | uniq > usermail
+cat mbox | grep 'From ' | cut -f2 -d' ' | cut -f1 -d'@' | sort | uniq > usermail
 
-cat passwd | grep 'G64' | cut -d: -f1 |
-    sort > userlist
+cat passwd | grep 'G64' | cut -d: -f1 | sort > userlist
 
 diff userlist usermail  | grep '<' | cut -c 3-
 
 exit 0
 ```
--->
+
 
 ## Tugas: *Spelling Checker*[^13-tugas]
 
@@ -518,3 +532,5 @@ unix
 [^13-tugas]: tugas bersifat **opsional**, plagiasi akan mendapat sanksi berat.
 [^13-unix]: <https://youtu.be/tc4ROCJYbm0?t=5m58s>
 [^13-words]: `/usr/share/dict/words`
+
+-->

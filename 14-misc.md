@@ -16,18 +16,18 @@ header-includes:
 # Kompresi File
 
 ## `tar`
-Menyimpan dan mengekstrak *file* arsip (**_t_**_ape_ **_ar_**_chive_).
+Menggabung beberapa *file* ke dalam satu *file* arsip (**_t_**_ape_ **_ar_**_chive_).
 ```sh
 tar [OPTION] [FILE...]
 ```
 - `-c`: *create*; buat arsip baru
 - `-x`: *extract*; ekstrak arsip
-- `-f`: *file*; gunakan *file* arsip berikut
+- `-f`: *file*; gunakan *file* berikut
 - `-z`: *zip*; gunakan kompresi `gzip`
 - `-C`: *chdir*; ekstrak ke direktori berikut
 
 ## `gzip`
-Mengkompresi *file*.
+Mengompres *file*.
 ```sh
 gzip [FILE...]
 ```
@@ -48,10 +48,10 @@ gunzip [FILE...]
 
 ```sh
 # compress
-tar -c DIR | gzip > DIR.tar.gz
+tar -c FILE... | gzip > ARCHIVE.tar.gz
 
 # extract
-gunzip < DIR.tar.gz | tar -x
+gunzip < ARCHIVE.tar.gz | tar -x
 ```
 
 ## `tar.gz`
@@ -64,17 +64,17 @@ gunzip < DIR.tar.gz | tar -x
 
 ```sh
 # compress
-tar -cz DIR -f DIR.tar.gz
+tar -czf ARCHIVE.tar.gz FILE...
 
 # extract
-tar -xzf DIR.tar.gz
+tar -xzf ARCHIVE.tar.gz
 ```
 
 
 ## `zip`
 Membungkus dan mengkompresi *file*.
 ```sh
-zip [OPTION] ZIPFILE FILE...
+zip [OPTION] ARCHIVE FILE...
 ```
 - `-e`: *encrypt*; kunci dengan *password*
 - `-r`: *recursive*; direktori seisinya
@@ -82,7 +82,7 @@ zip [OPTION] ZIPFILE FILE...
 ## `unzip`
 Mengekstrak *file* arsip ZIP.
 ```sh
-unzip ZIPFILE [-d EXDIR]
+unzip ARCHIVE [-d DIR]
 ```
 - `-d`: *directory*; ekstrak ke direktori berikut
 
@@ -94,43 +94,44 @@ Konversi citra: format, ukuran, efek, dan sebagainya.
 ```sh
 convert INFILE [OPTION] OUTFILE
 ```
-- `-blur`: samar
-- `-canny`: deteksi tepi
-- `-equalize`: ekualisasi histogram
-- `-negate`: negatif
-- `-normalize`: normalisasi warna
-- `-paint`: efek lukisan minyak
-- `-resize`: ubah ukuran
+- `-blur      WIDTHxHEIGHT:` menyamarkan detail
+- `-canny     WIDTHxHEIGHT:` deteksi tepi
+- `-equalize              :` ekualisasi histogram
+- `-negate                :` negatif
+- `-normalize             :` normalisasi warna
+- `-paint     RADIUS      :` efek lukisan minyak
+- `-resize    WIDTHxHEIGHT:` mengubah ukuran
 
 ---
 
-```sh
-convert rpi.jpg -canny 2x2 -negate rpi-edge.png
-```
+\small
 \centering
-![](img/rpic.png){width=33%}\
 
 ```sh
+convert rpi.jpg -canny 2x2 -negate rpi-edge.png
+
 convert rpi.jpg -paint 5 rpi-paint.jpg
 ```
 
-![](img/rpip.jpg){width=33%}\
+![](img/rpic.png){width=45%}
+![](img/rpip.jpg){width=45%}\
 
 
 ## `ffmpeg`
 Konversi audio dan video.
 ```sh
-ffmpeg [IN-OPTION] -i INFILE [OUT-OPTION] OUTFILE
+ffmpeg -i INFILE [OPTION] OUTFILE
 ```
 - `-b`: *bitrate*
+- `-c`: *codec*
 - `-f`: *frame rate*
 - `-s`: *frame size*
 - `-ss`: *seek start*; waktu awal
-- `-t`: *time*; durasi waktu
+- `-to`: waktu akhir
 
 
 ## `pandoc`
-Konversi Markdown ke format lainnya (HTML, LaTeX, PDF).
+Konversi Markdown ke format lain (HTML, LaTeX, PDF).
 ```sh
 pandoc [OPTION] [INFILE...] -o OUTFILE
 ```
@@ -140,10 +141,16 @@ pandoc [OPTION] [INFILE...] -o OUTFILE
 ---
 
 ```sh
-pandoc file.md -o file.html
+# HTML
+pandoc file.md -o file.html -s
 
+# PDF
 pandoc file.md -o file.pdf
 
+# HTML slide
+pandoc slide.md -t slidy  -o slide.html -s
+
+# PDF slide
 pandoc slide.md -t beamer -o slide.pdf
 ```
 
@@ -187,10 +194,13 @@ espeak [OPTION] [WORDS]
 ---
 
 ```bash
+# default English voice
 espeak "Hello world"
 
+# Indonesian voice
 espeak -v id "Institut Pertanian Bogor"
 
+# create audiobook
 man gittutorial | espeak --stdout | ffmpeg -i - git.mp3
 ```
 
@@ -206,18 +216,22 @@ dot [OPTION] [FILE]
 
 ```sh
 echo "digraph unix {
-  UNIX -> {SysV BSD Linux};
-  SysV -> {AIX HPUX Solaris};
-  BSD -> MacOSX;
-}" > unix.dot
-
-dot -Tpng unix.dot > unix.png
-
+    node [shape=box]
+    UNIX -> {SysV BSD}
+    SysV -> {AIX HPUX Solaris}
+    BSD  -> {FreeBSD MacOSX}
+    UNIX -> Linux [style=dashed]
+    {rank=same Linux MacOSX}
+}" | dot -Tpng > unix.png
 ```
 
 \begingroup\centering
 ![](img/unix.png){width=60%}\
 \endgroup
+
+---
+
+![](img/mk2017.dot.png)\
 
 
 # Info Sistem
@@ -293,7 +307,7 @@ Menampilkan penggunaan disk.
 ```sh
 du [OPTION] [FILE]
 ```
-- `-d`: *depth*; atur tingkat kedalaman
+- `-d`: *depth*; kedalaman direktori
 - `-h`: *human-readable*; format ukuran
 - `-s`: *summary*; total ukuran
 - `--inodes`: info pemakaian *inode*
@@ -314,5 +328,12 @@ vmstat [OPTION] [DELAY]
 - `-s`: *stat*; statistik memori
 - `-w`: *wide*; mode tampilan lebar
 - `-S M`: satuan dalam MiB
+
+## `sensors`
+Menampilkan info sensor.
+```sh
+sensors
+```
+
 
 # \textarabic{شكرا}
