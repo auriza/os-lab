@@ -2,7 +2,7 @@
 title: Sinkronisasi Thread
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2018
+date: 2019
 theme: Dresden
 header-includes:
     - \renewcommand{\figurename}{Gambar}
@@ -55,17 +55,19 @@ header-includes:
 ~~~c
 #include <pthread.h>
 
-int pthread_mutex_init(pthread_mutex_t *mutex,
-                       const pthread_mutexattr_t *attr);
-int pthread_mutex_lock(pthread_mutex_t *mutex));
-int pthread_mutex_unlock(pthread_mutex_t *mutex);
-int pthread_mutex_destroy(pthread_mutex_t *mutex);
+pthread_mutex_t mutex;
+
+pthread_mutex_init(&mutex, &attr);
+pthread_mutex_lock(&mutex);
+pthread_mutex_unlock(&mutex);
+pthread_mutex_destroy(&mutex);
 ~~~
 
 \normalsize
 
 - `init`: inisialisasi `mutex`
-- `lock`: mengunci *critical section*
+    - `attr` *default* isi dengan `NULL`
+- `lock`: mendapatkan kunci *critical section*
 - `unlock`: melepas kunci *critical section*
 - `destroy`: menghapus `mutex`
 
@@ -144,11 +146,11 @@ post(S) {
 
 ## Jenis Semaphore
 
-1. *Counting semaphore*
-    - nilai awal *semaphore* > 1
-2. *Binary semaphore*
+1. *Binary semaphore*
     - nilai awal *semaphore* = 1
     - sama fungsinya dengan *mutex*
+2. *Counting semaphore*
+    - nilai awal *semaphore* > 1
 
 ## Fungsi Semaphore
 
@@ -157,20 +159,22 @@ post(S) {
 ~~~c
 #include <semaphore.h>
 
-int sem_init(sem_t *S, int pshared, unsigned int value);
-int sem_wait(sem_t *S);
-int sem_post(sem_t *S);
-int sem_destroy(sem_t *S);
+sem_t sem;
+
+sem_init(&sem, pshared, value);
+sem_wait(&sem);
+sem_post(&sem);
+sem_destroy(&sem);
 ~~~
 
 \normalsize
 
-- `init`: inisialisasi `S` dengan nilai awal `value`
+- `init`: inisialisasi `sem` dengan nilai awal `value`
 - `wait`:
-    - selama `S = 0` &rarr; *busy wait*
-    - hingga `S > 0` &rarr; `S--`, *continue*
-- `post`: `S++`
-- `destroy`: menghapus `S`
+    - selama `sem = 0` &rarr; *busy wait*
+    - hingga `sem > 0` &rarr; `sem--`, *continue*
+- `post`: `sem++`
+- `destroy`: menghapus `sem`
 
 ## Latihan
 
@@ -179,10 +183,11 @@ Perbaiki latihan sebelumnya dengan menggunakan *semaphore*!
 
 # Tugas
 
-## Array Sum
+## *Big Array Sum*
 
 Identifikasi *critical section* dan perbaiki kode berikut ini supaya hasilnya benar.
-Kumpulkan di LMS.
+Kumpulkan di LMS paling lambat hingga praktikum berakhir.
+<!-- Tunjukkan ke asprak untuk dinilai.-->
 
 ---
 
@@ -233,6 +238,15 @@ int main()
     return 0;
 }
 ~~~
+
+## Penilaian
+
+- `+80`: keluaran selalu benar (jalankan min 10 kali)
+- `+20`: jumlah *syscall* `clone`[^clone] ada 4
+
+[^clone]: cek dengan perintah `'strace -ce clone ./program'`
+
+<!--
 
 # Tugas Bonus
 
@@ -287,7 +301,7 @@ int main()
     clock_gettime(CLOCK_REALTIME, &t1);
     for (i = 0; i < n; i++) {
         x = a + (i + 0.5) * dx;         // interval's midpoint
-        y = (4.0 / (1.0 + x*x));        // interval's height --> f(x) = 4 / (1+x^2)
+        y = (4.0 / (1.0 + x*x));        // interval's height -> f(x) = 4 / (1+x^2)
         area += y * dx;                 // interval's area
     }
     clock_gettime(CLOCK_REALTIME, &t2);
@@ -298,3 +312,5 @@ int main()
     return 0;
 }
 ```
+
+-->

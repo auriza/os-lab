@@ -2,7 +2,7 @@
 title: Proses
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2018
+date: 2019
 theme: Dresden
 header-includes:
     - \usepackage{tikz}
@@ -25,14 +25,14 @@ header-includes:
 
 ## LMS
 
-- <https://lms.ipb.ac.id/course/view.php?id=154>
-    - *key*: `so2018`
+- <https://newlms.ipb.ac.id/course/view.php?id=506>
+    - *key*: `soganjil19`
 - Buku acuan:
     - Silberschatz *et al.* 2013. *Operating System Concepts*. Ed ke-9.
-- Proporsi nilai praktikum (30%):
+- Proporsi nilai praktikum (25%):
     - UTSP: 10%
     - UASP: 10%
-    - Tugas: 10%
+    - Tugas: 5%
 
 
 # Proses

@@ -2,7 +2,7 @@
 title: Signal
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2018
+date: 2019
 theme: Dresden
 header-includes:
     - \renewcommand{\figurename}{Gambar}
@@ -214,9 +214,9 @@ int main()
     - lanjut lagi berjalan selama 2 detik, lalu
     - berhenti
 - Jika benar, *child* akan mencetak 4 kali, jeda, dan 2 kali.
-- Kumpulkan di LMS berupa satu *file* dengan nama `[NIM].c`.
-    - paling lambat setelah praktikum berakhir
+    - tunjukkan ke asprak untuk dinilai
 
+<!--
 
 ## Implementasi Fungsi `system()` (Bonus)
 
@@ -247,3 +247,4 @@ int main() {
 }
 ```
 
+-->

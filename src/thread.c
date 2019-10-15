@@ -9,27 +9,23 @@ int sum = 0;
 
 void *array_sum(void *arg)
 {
-    int *array = (int*)arg;     // cast void* --> int*
-    int i;
-
-    for (i = 0; i < N/T; i++)
-        sum += array[i];
-
+    for (int i = 0; i < N/T; i++)
+        sum += ((int*)arg)[i];
     pthread_exit(NULL);
 }
 
 int main()
 {
     pthread_t t[T];
-    int A[N], i;
+    int A[N];
 
-    for (i = 0; i < N; i++)
-        A[i] = rand()%10;  // seed = 0
+    for (int i = 0; i < N; i++)
+        A[i] = rand()%10;
 
-    for (i = 0; i < T; i++)
+    for (int i = 0; i < T; i++)
         pthread_create(&t[i], NULL, array_sum, &A[i*N/T]);
 
-    for (i = 0; i < T; i++)
+    for (int i = 0; i < T; i++)
         pthread_join(t[i], NULL);
 
     printf("%d\n", sum);    // 448706

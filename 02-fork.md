@@ -2,7 +2,7 @@
 title: Fork, Wait
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2018
+date: 2019
 theme: Dresden
 ---
 
@@ -241,13 +241,9 @@ int main()
     - 3.13
     - 3.14
     - 3.17
+    - 3.21
 
 - Kerjakan tanpa bantuan komputer terlebih dahulu, lalu cek jawaban anda dengan
     menjalankan kode program yang diberikan.
 
 
-## Latihan Tambahan
-
-- Kerjakan soal nomor:
-    - 3.21
-    - 3.22 (baca sendiri ttg *shared-memory* antarproses)

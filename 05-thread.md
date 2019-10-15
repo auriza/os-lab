@@ -2,7 +2,7 @@
 title: Thread
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2018
+date: 2019
 theme: Dresden
 header-includes:
     - \renewcommand{\figurename}{Gambar}
@@ -40,7 +40,7 @@ header-includes:
 
 ## Membuat Thread
 
-`pthread_create(&thread, attr, func, arg);`{.c}
+`pthread_create(thread, attr, func, arg);`{.c}
 
 - membuat satu `thread` dengan atribut `attr` yang akan menjalankan fungsi `func`
     dengan argumen `arg`[^05-create]
@@ -53,7 +53,7 @@ header-includes:
 
 ## Menunggu Thread
 
-`pthread_join(thread, &retval);`{.c}
+`pthread_join(thread, retval);`{.c}
 
 - menunggu `thread` selesai dan menyimpan keluarannya ke variabel `retval`[^05-join]
 
@@ -77,7 +77,7 @@ header-includes:
 #include <pthread.h>
 
 void *hello(void *arg) {
-    printf("hello\n");
+    puts("hello");
     pthread_exit(NULL);
 }
 
@@ -99,7 +99,6 @@ int main() {
 
     pthread_create(&t1, NULL, hello, NULL);
     pthread_create(&t2, NULL, hello, NULL);
-
     pthread_join(t1, NULL);
     pthread_join(t2, NULL);
 
@@ -107,24 +106,26 @@ int main() {
 }
 ~~~
 
-## N Thread
+## *N* Thread
 
 ~~~c
-#define N 4
+...
+
+#define N 8
 
 int main() {
     pthread_t t[N];
-    int i;
 
-    for (i = 0; i < N; i++)
+    for (int i = 0; i < N; i++)
         pthread_create(&t[i], NULL, hello, NULL);
-
-    for (i = 0; i < N; i++)
+    for (int i = 0; i < N; i++)
         pthread_join(t[i], NULL);
 
     return 0;
 }
 ~~~
+
+# Contoh Argumen
 
 ## Satu Thread dengan Argumen
 
@@ -133,13 +134,13 @@ int main() {
 #include <pthread.h>
 
 void* hello(void* arg) {
-    printf("hello from thread %s\n", (char*)arg);
+    printf("hello from thread %d\n", ((int*)arg)[0]);
     pthread_exit(NULL);
 }
 
 int main() {
     pthread_t t;
-    pthread_create(&t, NULL, hello, "0");
+    pthread_create(&t, NULL, hello, &(int){42});
     pthread_join(t, NULL);
     return 0;
 }
@@ -148,12 +149,14 @@ int main() {
 ## Dua Thread dengan Argumen
 
 ~~~c
+...
+
 int main() {
     pthread_t t1, t2;
+    int id[] = {10, 20};
 
-    pthread_create(&t1, NULL, hello, "0");
-    pthread_create(&t2, NULL, hello, "1");
-
+    pthread_create(&t1, NULL, hello, &id[0]);
+    pthread_create(&t2, NULL, hello, &id[1]);
     pthread_join(t1, NULL);
     pthread_join(t2, NULL);
 
@@ -161,20 +164,19 @@ int main() {
 }
 ~~~
 
-## N Thread dengan Argumen
+## *N* Thread dengan Argumen
 
 ~~~c
-#define N 4
+...
+#define N 8
 
 int main() {
     pthread_t t[N];
-    char *id[N] = {"0", "1", "2", "3"};
-    int i;
+    int id[N] = {0, 1, 2, 3, 4, 5, 6, 7};
 
-    for (i = 0; i < N; i++)
-        pthread_create(&t[i], NULL, hello, id[i]);
-
-    for (i = 0; i < N; i++)
+    for (int i = 0; i < N; i++)
+        pthread_create(&t[i], NULL, hello, &id[i]);
+    for (int i = 0; i < N; i++)
         pthread_join(t[i], NULL);
 
     return 0;
@@ -185,7 +187,7 @@ int main() {
 
 ## Jumlah Array
 
-- lengkapi program berikut untuk menjumlahkan nilai semua elemen *array* `A`
+- lengkapi program berikut untuk menjumlahkan *array* `A`
 - gunakan variabel global `sum` untuk menyimpan hasilnya
 
     ~~~c
@@ -197,8 +199,8 @@ int main() {
     int main() {
         int A[N] = {68,34,64,95,35,78,65,93,
                     51,67, 7,77, 4,73,52,91};
-        // TODO: array sum
-        printf("%d\n", sum);    // 954
+        /* TODO: array sum                  */
+        printf("%d\n", sum);    /* 954      */
         return 0;
     }
     ~~~
@@ -219,7 +221,17 @@ int main() {
 - bisa?
 - sekarang gunakan 4 buah *thread* untuk menjumlahkan nilai semua elemen *array* A
 - pastikan pembagian kerja antara keempat *thread* seimbang, yaitu tiap *thread* memproses $\frac{N}{4}$ elemen
-- kumpulkan di LMS, deadline akhir praktikum
+- kumpulkan di LMS paling lambat hingga praktikum berakhir
+<!-- - tunjukkan ke asprak untuk dinilai -->
+
+## Penilaian
+
+- `+60`: keluaran benar: `954`
+- `+20`: jumlah *syscall* `clone`[^clone] ada 4
+- `+20`: variabel *array* A lokal di fungsi utama
+- `-20`: pemanggilan fungsi `pthread` tanpa *looping*
+
+[^clone]: cek dengan perintah `'strace -ce clone ./program'`
 
 <!--
 

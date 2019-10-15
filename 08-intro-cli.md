@@ -2,7 +2,7 @@
 title: UNIX Command Line
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2018
+date: 2019
 theme: Dresden
 header-includes:
     - \renewcommand{\figurename}{Gambar}
@@ -10,7 +10,7 @@ header-includes:
 
 # Pendahuluan
 
-## Mengapa CLI?
+## Mengapa Belajar CLI?
 
 - administrasi server UNIX
 - perintah standar POSIX
@@ -27,9 +27,12 @@ header-includes:
     - 1.2 GHz quad-core ARMv8 CPU
     - 1 GiB RAM
 - Raspbian GNU/Linux
+- Alamat IP: `172.18.12.12`
+    - *login*: lihat LMS
 
 [^08-rpi3]: <https://www.raspberrypi.org/products/raspberry-pi-3-model-b/>
 
+<!--
 ---
 
 ![Raspberry Pi](img/rpi2-server.jpg){width=80%}
@@ -38,12 +41,12 @@ header-includes:
 ## Login Server
 
 - Alamat: `172.18.12.12`
-- *Login*: lihat LMS<!--
+- *Login*: lihat LMS
     - pola: `^[a-z][-a-z0-9_]{0,7}`
-- *Password*: 5 digit terakhir NIM -->
+- *Password*: 5 digit terakhir NIM
 
 ![Model komputasi terpusat](img/terminals.jpg){width=50%}
-
+-->
 
 # Perintah Dasar
 
@@ -171,38 +174,40 @@ mail [USER...]
 
 ---
 
-### Contoh: mengirim email
+:::::: {.columns}
+::: {.column width="33%"}
+
+### send mail
 
 \scriptsize
 
 ```
-pi@raspi:~ $ mail auriza
+pi@raspi:~ $ mail user
 Cc:
 Subject: Test
 Hello world!
 [Ctrl+D]
 ```
 
----
+:::
+::: {.column width="67%"}
 
-### Contoh: membaca, membalas, dan menghapus email
+### print, reply, delete mail
 
 \scriptsize
 
 ```
-auriza@raspi:~ $ mail
-"/var/mail/auriza": 1 message 1 new
->N   1 pi@raspi       Tue Nov  6 14:54  15/422   Test
+user@raspi:~ $ mail
+"/var/mail/user": 1 message 1 new
+>N   1 pi@raspi   Tue Nov  6 14:54  15/422   Test
 
 ? print 1
-...
 Subject: Test
 From: pi@raspi
 
 Hello world!
 
 ? reply 1
-...
 Hello too.
 [Ctrl+D]
 
@@ -210,6 +215,9 @@ Hello too.
 
 ? quit
 ```
+
+:::
+::::::
 
 # Lain-Lain
 
@@ -254,7 +262,6 @@ menghapus satu kata ke belakang
 
 [^08-cmd]: <https://en.wikipedia.org/wiki/Template:Unix_commands>
 [^08-esh]: <http://explainshell.com>
-[^08-rgx]: <http://regexr.com>
 [^08-cfu]: <https://www.commandlinefu.com>
 
 # Tugas

@@ -1,7 +1,7 @@
 all: 01-proses.pdf \
 	 02-fork.pdf \
-	 03-signal.pdf \
-	 04-shell.pdf \
+	 03-shell.pdf \
+	 04-signal.pdf \
 	 05-thread.pdf \
 	 06-thread-sync.pdf \
 	 08-intro-cli.pdf \

@@ -1,25 +1,24 @@
 ## INIT SETUP
-raspi-config --> timezone
-passwd
-crontab -e
-### 0 13 * * * * curl http://1.1.1.3/ac_portal/login.php -sd 'opr=pwdLogin&userName=asesor01&pwd=asesor1p8'
+sudo raspi-config --> passwd, locale:en_US, timezone, enable ssh
+#crontab -e
+### 0 13 * * * * curl http://1.1.1.3/ac_portal/login.php -sd 'opr=pwdLogin&userName=komdat&pwd=kom312ipbb'
 
 ## STATIC IP
-cat << EOF >> /etc/dhcpcd.conf
+cat << ! >> /etc/dhcpcd.conf
 
 interface eth0
 static ip_address=172.18.12.12/24
 static routers=172.18.12.254
-static domain_name_servers=172.17.5.14 172.17.5.21
-EOF
+static domain_name_servers=172.17.5.14
+!
 sudo reboot
 
 ## APPS
 sudo apt update
 sudo apt upgrade
 sudo apt install mailutils
-sudo apt install htop tree w3m git bmon
-sudo apt install zip imagemagick libav-tools pandoc tesseract-ocr-ara espeak graphviz figlet
+sudo apt install tree w3m git bmon
+sudo apt install imagemagick libav-tools pandoc tesseract-ocr-ara espeak graphviz figlet
 
 ## APACHE
 sudo apt install apache2
@@ -29,16 +28,16 @@ sudo systemctl restart apache2
 ## SHELL IN A BOX
 sudo apt install shellinabox
 sudo editor /etc/default/shellinabox
-<<--
+<<!
 SHELLINABOX_ARGS="--no-beep --disable-ssl"
--
+!
 
 ## ENERGY SAVING
 sudo editor /boot/config.txt                        # Disable WiFi and BT
-<<--
+<<!
 dtoverlay=pi3-disable-bt
 dtoverlay=pi3-disable-wifi
--
+!
 sudo systemctl disable hciuart
 vcgencmd display_power 0                            # HDMI power off
 #echo none | sudo tee /sys/class/leds/led0/trigger  # ACT LED off
