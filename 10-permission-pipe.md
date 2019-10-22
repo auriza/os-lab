@@ -2,7 +2,7 @@
 title: Permission, Link, dan Stream
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2018
+date: 2019
 theme: Dresden
 header-includes:
     - \renewcommand{\figurename}{Gambar}
@@ -22,9 +22,9 @@ header-includes:
 ##  *Permission*
 
 - Tiga jenis *user*:
-    - *user owner* (`u`)
-    - *group owner* (`g`)
-    - *others* (`o`)
+    - `u`: *user owner*
+    - `g`: *group owner*
+    - `o`: *others*
 
 - Tiga jenis *permission*:
 
@@ -53,10 +53,6 @@ chown [OPTION] OWNER[:GROUP] FILE
 ```
 - `-R`: *recursive*; ubah direktori seisinya
 
----
-
-![`chown` dan `chmod`](img/chown-chmod.png)
-
 ## `chmod`
 Mengubah mode *permission* suatu *file*.
 ```bash
@@ -74,32 +70,49 @@ chmod [OPTION] MODE FILE...
 ## Contoh `chmod`
 
 - `r--r--r--`
-    - `chmod a=r FILE`
     - `chmod 444 FILE`
+    - `chmod a=r FILE`
 - `rw-rw----`
-    - `chmod ug=rw,o= FILE`
     - `chmod 660 FILE`
+    - `chmod ug=rw,o= FILE`
 - `rwxr-xr-x`
-    - `chmod u=rwx,go=rx FILE`
     - `chmod 755 FILE`
+    - `chmod u=rwx,go=rx FILE`
 
 ---
 
 ![UNIX permissions](img/permissions.png)
 
-# Link
+---
 
-## Link
+![`chown` dan `chmod`](img/chown-chmod.png)
+
+## Latihan
+
+- Launch School - Intro Command Line
+
+    <https://launchschool.com/books/command_line/read/permissions#exercises>
+
+
+# *Link*
+
+## *Hard Link* vs *SymLink*
 
 1. *Hard link*
-    - mengacu pada nomor indeks *file* (inode)
-    - tidak terpengaruh terhadap perubahan nama *file*
-    - namun hanya bisa dalam satu partisi yang sama
+    - mengacu ke nomor indeks *file* (inode)
+    - perubahan nama *file* tidak berpengaruh
+    - hanya bisa dalam satu partisi
 2. *Symbolic link*
-    - mengacu pada nama *file*
-    - bisa lintas partisi
-    - bisa membuat *link* ke direktori
-    - namun jika nama *file* yang dirujuk berubah akan mengakibatkan *broken link*
+    - mengacu ke nama *file*
+    - perubahan nama *file* menyebabkan *broken link*
+    - bisa lintas partisi dan *link* ke direktori
+
+## `ln`
+Membuat *link* antar-*file*.
+```bash
+ln [OPTION] TARGET LINK-NAME
+```
+- `-s`: *symbolic*; buat *symlink*
 
 ---
 
@@ -108,13 +121,6 @@ chmod [OPTION] MODE FILE...
 ---
 
 ![Direktori dan symlink](img/directories.png)
-
-## `ln`
-Membuat *link* antar-*file*.
-```bash
-ln [OPTION] TARGET LINK-NAME
-```
-- `-s`: *symbolic*; buat *symlink*
 
 
 # Stream
@@ -129,16 +135,13 @@ Setiap proses memiliki tiga *stream* standar I/O:
 
 ```
             +------------+
-            |            | --->  stdout
-stdin  +--> |   PROSES   |
-            |            | --->  stderr
-            +------------+
+            |            |
+stdin  ---> |   PROSES   | --->  stdout
+            |            |
+            +-----+------+
+                  |
+                  \--->  stderr
 ```
-
----
-
-![File descriptor](img/file-descriptors.png)
-
 
 ## *Pipe*
 
@@ -159,10 +162,6 @@ stdin  +--> |   PROSES   |
     - `echo "2 + 5" | bc`
     - `who | wc -l`
 
----
-
-![Pipe](img/pipes.png)
-
 ## *Redirect*
 
 - Mengarahkan *stream* standar proses ke suatu *file* yang ditentukan oleh pengguna
@@ -181,6 +180,14 @@ stdin  +--> |   PROSES   |
     rev < now.txt
     rev < now.txt > rev.txt
     ```
+
+---
+
+![File descriptor](img/file-descriptors.png)
+
+---
+
+![Pipe](img/pipes.png)
 
 <!--
 

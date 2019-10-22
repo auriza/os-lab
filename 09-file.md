@@ -2,7 +2,7 @@
 title: File dan Direktori
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2018
+date: 2019
 theme: Dresden
 ---
 
@@ -122,16 +122,23 @@ ditulis lengkap dari direktori *root*; contoh: '`/etc`'
 ### *Relative*
 ditulis relatif terhadap posisi saat ini; contoh: '`../etc`'
 
+## Latihan
+
+- Launch School - Intro Command Line
+
+    <https://launchschool.com/books/command_line/read/files_directories_executables#managingfiles>
+
+# Tugas
+
 ## Tugas
 
-- Buat direktori publik
+- Webroot
     - masuk ke direktori *home* anda
     - buat direktori `public_html`
-- Unduh templat
+- Template
     - masuk ke direktori tersebut
     - salin *file* `/home/auriza/resume.html` ke sini
-- Edit dan keluaran
+- Edit
     - edit *file* dengan `editor` sesuai dengan data diri anda
     - hasilnya bisa dilihat pada laman:
-        - <http://172.18.12.12/~$USER/resume.html>
-        - <http://os.apps.cs.ipb.ac.id/~$USER/resume.html>
+        - <http://172.18.12.12/~$USER>

@@ -4,8 +4,8 @@
 
 1. [Proses](01-proses.md)
 2. [Fork](02-fork.md)
-3. [Signal](03-signal.md)
-4. [Shell](04-shell.md)
+3. [Shell](03-shell.md)
+4. [Signal](04-signal.md)
 5. [Thread](05-thread.md)
 6. [Sinkronisasi thread](06-thread-sync.md)
 7. UTSP

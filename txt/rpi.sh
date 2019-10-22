@@ -18,19 +18,19 @@ sudo apt update
 sudo apt upgrade
 sudo apt install mailutils
 sudo apt install tree w3m git bmon
-sudo apt install imagemagick libav-tools pandoc tesseract-ocr-ara espeak graphviz figlet
+sudo apt install imagemagick pandoc tesseract-ocr-ara espeak graphviz figlet
 
 ## APACHE
 sudo apt install apache2
 sudo a2enmod userdir
 sudo systemctl restart apache2
 
-## SHELL IN A BOX
-sudo apt install shellinabox
-sudo editor /etc/default/shellinabox
-<<!
-SHELLINABOX_ARGS="--no-beep --disable-ssl"
-!
+#~## SHELL IN A BOX
+#~sudo apt install shellinabox
+#~sudo editor /etc/default/shellinabox
+#~<<!
+#~SHELLINABOX_ARGS="--no-beep --disable-ssl"
+#~!
 
 ## ENERGY SAVING
 sudo editor /boot/config.txt                        # Disable WiFi and BT
