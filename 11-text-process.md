@@ -2,16 +2,17 @@
 title: Pencarian *File* dan Pemrosesan Teks
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2018
+date: 2019
 theme: Dresden
+linkcolor: .
 header-includes:
     - \renewcommand{\figurename}{Gambar}
 ---
 
-# Pencarian *File*
+# Pencarian
 
 ## `man`
-Mencari halaman manual suatu program, fungsi, dan sebagainya.
+Menampilkan manual suatu program, fungsi, dan lain-lain.
 ```bash
 man [SECTION] PAGE
 ```
@@ -32,7 +33,7 @@ which COMMAND
 
 
 ## `locate`
-Mencari lokasi *file* berdasarkan namanya pada *database*.
+Mencari *file* berdasarkan namanya.
 ```bash
 locate [OPTION] 'PATTERN'
 ```
@@ -40,17 +41,17 @@ locate [OPTION] 'PATTERN'
 - `-i`: *ignore-case*
 
 ## `find`
-Mencari *file* langsung pada sebuah hierarki direktori.
+Mencari *file* pada sebuah hierarki direktori.
 ```bash
 find [PATH] [TEST]...
 ```
-- `-name 'PATTERN'  `
+- `-name  'PATTERN' `
 - `-iname 'PATTERN' `
-- `-size [+-]N[kMG] `
+- `-size  [+-]N[kMG]`
 - `-atime [+-]N     `
 - `-mtime [+-]N     `
 - `-empty           `
-- `-type [dfl]      `
+- `-type  [dfl]     `
 
 ## `xargs`
 Mengubah tiap baris masukan menjadi argumen suatu perintah.
@@ -111,13 +112,13 @@ vi [OPTION] [FILE]...
 
 ---
 
-![*Real programmers*](img/real_programmers.png)
+![*Editor wars*](img/real_programmers.png)
 
 
 # Pemrosesan Teks
 
 ## `cat`
-Menggabungkan *file* dan menampilkannya ke layar.
+Menggabungkan *file* dan menampilkan isinya ke layar.
 ```bash
 cat [FILE]...
 ```
@@ -255,7 +256,7 @@ Regex digunakan untuk mencari *string* tertentu pada teks.
 
 Misal, ekspresi reguler `/G64\d{6}/` dapat mencocokkan NIM semua mahasiswa S1 Ilmu Komputer IPB.
 
-Latihan dan informasi lebih lanjut, kunjungi <http://regexr.com>.
+Untuk informasi dan latihan lebih lanjut, *lihat* <http://regexr.com>.
 
 
 ## Referensi Singkat
@@ -330,6 +331,6 @@ Latihan dan informasi lebih lanjut, kunjungi <http://regexr.com>.
 
 ## Tugas
 
-UNIX Text Processing Contest 2018^[<https://www.hackerrank.com/csipb-unix-text-processing-2018>]
+UNIX Text Processing Contest 2019^[<https://www.hackerrank.com/unix-text-processing-2019>]
 
-Nilai maksimum: **150**
+Nilai maksimum: **120**
