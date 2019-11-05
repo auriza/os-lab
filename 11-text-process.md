@@ -1,5 +1,5 @@
 ---
-title: Pencarian *File* dan Pemrosesan Teks
+title: Pencarian dan Pemrosesan Teks
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
 date: 2019

@@ -2,12 +2,19 @@
 title: Proses dan Job
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2018
+date: 2019
 theme: Dresden
 header-includes:
     - \renewcommand{\figurename}{Gambar}
     - \renewcommand{\tablename}{Tabel}
 ---
+
+## Tugas
+
+- Login ke server `172.18.12.12`
+- Buat *file* bernama `hrank.txt` di *home* yang berisi *username* anda di kontes HackerRank; contoh:
+    - `echo 'auriza_akbar' > ~/hrank.txt`{.bash}
+- **Penting**: untuk penilaian kontes
 
 # Proses
 
@@ -78,11 +85,6 @@ kill [-SIG] PID...
 - `-STOP`
 - `-CONT`
 
----
-
-![Don't `SIGKILL`](img/dont-sigkill-l.png)
-
-
 ## `pmap`
 Menampilkan *memory map* sebuah proses.
 ```bash
@@ -110,14 +112,10 @@ renice [-n] NICE PID
 ```
 
 ## `time`
-Menjalankan program dan meringkas penggunaan waktu CPU.
+Menjalankan program dan menampilkan penggunaan waktu CPU.
 ```bash
 time COMMAND
 ```
-
----
-
-![*User-space* vs *kernel-space*](img/userspace.png)
 
 ## `timeout`
 Menjalankan program dengan batasan waktu tertentu.
@@ -134,6 +132,14 @@ prlimit [OPTION] COMMAND
 - `-s`: *stack*; ukuran *stack* (byte)
 - `-v`: *virtual memory*; ukuran memori (byte)
 - `-n`: *number of open files*
+
+---
+
+![Don't `SIGKILL`](img/dont-sigkill-l.png)
+
+---
+
+![*User-space* vs *kernel-space*](img/userspace.png)
 
 ---
 
@@ -277,6 +283,6 @@ ps nice renice pidof kill
 
 - HP silent, taruh di dalam tas; tas taruh depan
 - tidak membawa apapun di meja
-- boleh membuka materi di LMS atau GitLab IPB
-    - <http://code.cs.ipb.ac.id/auriza/os-lab>
+- boleh membuka materi di LMS atau GitHub
+    - <https://github.com/auriza/os-lab>
 - pelanggaran (mencontek, kerjasama, berisik, dll): nilai **0**
