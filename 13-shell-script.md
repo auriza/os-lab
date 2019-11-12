@@ -2,32 +2,39 @@
 title: Shell Scripting
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2018
+date: 2019
 theme: Dresden
+linkcolor: .
 ---
 
 ## *Shell Scripting*
-- menyimpan perintah *shell* ke dalam suatu *file*
-- fitur pemrograman: variabel, kontrol aliran, fungsi
+- *script* berisi kumpulan perintah *shell*
+    - fitur: variabel, pemilihan, perulangan, fungsi, ...
 - berguna untuk:
     - pemrosesan teks
-    - otomatisasi administrasi sistem
-    - contoh *script* untuk instalasi lab:
-        - <https://bit.ly/2CksAGQ>
+    - otomasi administrasi sistem
+    - contoh:
+        - *script* instalasi lab: <https://bit.ly/2CksAGQ>
+        - *script* setting VM UTBK: <https://bit.ly/36SJdqi>
 
 ## Contoh
 
 1. Buat *file* teks `hello` yang berisi:
+
     ```sh
     #!/bin/sh
     echo "Hello world, $USER"
     exit 0
     ```
+
 2. Berikan *permission* untuk *execute*
+
     ```sh
     $ chmod +x hello
     ```
+
 3. Jalankan program `hello`
+
     ```sh
     $ ./hello
     ```
@@ -39,12 +46,14 @@ theme: Dresden
 - [CommandLineFu.com](https://www.commandlinefu.com/commands/browse/sort-by-votes)
 
 
-# Parameter
+# Variabel
 
 ## Variabel
 
 ```sh
-# no space before/after `=` assignment!
+# all datatype is string
+
+# no space around `=` assignment
 fname="Steve"
 lname="Bourne"
 
@@ -63,10 +72,10 @@ read NAME...
 
 ```sh
 
-read input
+read var
   # <ketikkan masukan>
 
-echo $input
+echo $var
 ```
 
 ## *Pathname Expansion*
@@ -177,7 +186,7 @@ echo $((RANDOM%100))
 # Kontrol Aliran
 
 
-## Kondisional
+## Pemilihan
 
 ```sh
 if ...
@@ -239,7 +248,7 @@ done
 ```
 
 ## `seq`
-Mencetak sekuens angka, berguna untuk *looping*.
+Mencetak sekuens angka, berguna untuk perulangan `for`.
 ```sh
 seq [FIRST [INCREMENT]] LAST
 ```
@@ -277,7 +286,7 @@ NAME () {
 # Contoh
 
 
-## Kondisional
+## Pemilihan
 
 ```sh
 #!/bin/sh
@@ -353,7 +362,7 @@ uppercase | rot13
 exit 0
 ```
 
-## Perulangan dan Percabangan
+## Perulangan dan Pemilihan
 
 ```sh
 #!/bin/sh
@@ -367,6 +376,9 @@ for i in $(seq 100); do
 done
 echo $count
 ```
+
+- **catatan**: *shell script* tidak cocok untuk program aritmatika
+    - gunakan bahasa lain yang lebih sesuai, misal Python atau Ruby
 
 # Latihan
 
@@ -386,7 +398,7 @@ $ man ls | ./topwords
 
 ---
 
-### Contoh *pipeline*
+### Petunjuk *pipeline* pemrosesan teks
 
 1. ubah ke *lowercase*
 2. jadikan satu kata satu baris
@@ -426,11 +438,11 @@ $ ./top-ip-attack auth.log.gz 3
 221.194.47.208  1819
 ```
 
-[^13-authlog]: <https://lms.ipb.ac.id/mod/folder/view.php?id=28806>
+[^13-authlog]: <https://github.com/auriza/os-lab/raw/master/txt/auth.log.gz>
 
 ---
 
-### Contoh *pipeline*
+### Petunjuk *pipeline* pemrosesan teks
 
 1. tampilkan *file* log dengan `zcat`{.sh}
 2. ambil baris yang mengandung kata `'Failed'`{.sh}
@@ -475,12 +487,12 @@ michaeln
 ...
 ```
 
-[^13-mbox1]: <https://lms.ipb.ac.id/mod/folder/view.php?id=28806>
-[^13-passwd]: <https://lms.ipb.ac.id/mod/folder/view.php?id=28806>
+[^13-mbox1]:  <https://github.com/auriza/os-lab/blob/master/txt/auriza.mbox>
+[^13-passwd]: <https://github.com/auriza/os-lab/blob/master/txt/passwd>
 
 ---
 
-### Contoh *pipeline*
+### Petunjuk *pipeline* pemrosesan teks
 
 1. Daftar pengirim email
     1. tampilkan *file* kotak surat

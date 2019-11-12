@@ -16,6 +16,6 @@
 9. [File](09-file.md), [permission, link, pipe, redirection](10-permission-pipe.md)
 10. [Pemrosesan teks](11-text-process.md)
 11. [Job control](12-job-control.md)
-12. UASP
-13. [Shell script](13-shell-script.md)
+12. [Shell script](13-shell-script.md)
+13. UASP
 14. [Lain-lain](14-misc.md)
