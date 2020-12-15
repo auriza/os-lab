@@ -23,16 +23,19 @@ header-includes:
 
 ## Server SO
 
+- Alamat: <http://so.apps.cs.ipb.ac.id/sh>
+    - *login*: lihat LMS
+
+<!--
 - Raspberry Pi 3 Model B[^08-rpi3]
     - 1.2 GHz quad-core ARMv8 CPU
     - 1 GiB RAM
 - Raspbian GNU/Linux
-- Alamat IP: `172.18.12.12`
+- Alamat: `172.18.19.185`
     - *login*: lihat LMS
 
 [^08-rpi3]: <https://www.raspberrypi.org/products/raspberry-pi-3-model-b/>
 
-<!--
 ---
 
 ![Raspberry Pi](img/rpi2-server.jpg){width=80%}
@@ -40,10 +43,10 @@ header-includes:
 
 ## Login Server
 
-- Alamat: `172.18.12.12`
+- Alamat: `so.apps.cs.ipb.ac.id/sh`
 - *Login*: lihat LMS
     - pola: `^[a-z][-a-z0-9_]{0,7}`
-- *Password*: 5 digit terakhir NIM
+- *Password*: 6 digit terakhir NIM
 
 ![Model komputasi terpusat](img/terminals.jpg){width=50%}
 -->

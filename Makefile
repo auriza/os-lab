@@ -16,7 +16,7 @@ all: 01-proses.pdf \
 	pandoc -t beamer -o $@ $<
 
 14-misc.pdf: 14-misc.md
-	pandoc -t beamer -o $@ $< --latex-engine=xelatex
+	pandoc -t beamer -o $@ $< --pdf-engine=xelatex
 
 clean:
 	rm -f *.pdf

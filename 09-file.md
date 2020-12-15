@@ -133,12 +133,13 @@ ditulis relatif terhadap posisi saat ini; contoh: '`../etc`'
 ## Tugas
 
 - Webroot
-    - masuk ke direktori *home* anda
+    - login ke server SO: <http://os.apps.cs.ipb.ac.id/sh>
     - buat direktori `public_html`
-- Template
+- Templat
     - masuk ke direktori tersebut
-    - salin *file* `/home/auriza/resume.html` ke sini
+    - salin *file* `/home/auriza/index.html` ke sini
 - Edit
     - edit *file* dengan `editor` sesuai dengan data diri anda
     - hasilnya bisa dilihat pada laman:
-        - <http://172.18.12.12/~$USER>
+        - <http://os.apps.cs.ipb.ac.id/~$USER>
+        - <http://os.apps.cs.ipb.ac.id/~auriza>

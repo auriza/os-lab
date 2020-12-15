@@ -9,13 +9,6 @@ header-includes:
     - \renewcommand{\tablename}{Tabel}
 ---
 
-## Tugas
-
-- Login ke server `172.18.12.12`
-- Buat *file* bernama `hrank.txt` di *home* yang berisi *username* anda di kontes HackerRank; contoh:
-    - `echo 'auriza_akbar' > ~/hrank.txt`{.bash}
-- **Penting**: untuk penilaian kontes
-
 # Proses
 
 ## `ps`
@@ -76,9 +69,19 @@ pidof PROGRAM
 ```
 
 ## `kill`
-Mengirim sinyal ke suatu proses (*default*: `SIGTERM`).
+Mengirim sinyal ke proses (*default*: `SIGTERM`).
 ```bash
 kill [-SIG] PID...
+```
+- `-INT`
+- `-KILL`
+- `-STOP`
+- `-CONT`
+
+## `pkill`
+Mengirim sinyal ke proses (*default*: `SIGTERM`) berdasarkan namanya.
+```bash
+pkill [-SIG] [-u user] PROCESSNAME...
 ```
 - `-INT`
 - `-KILL`

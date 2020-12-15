@@ -83,9 +83,11 @@ chmod [OPTION] MODE FILE...
 
 ![UNIX permissions](img/permissions.png)
 
+<!--
 ---
 
 ![`chown` dan `chmod`](img/chown-chmod.png)
+-->
 
 ## Latihan
 
@@ -99,7 +101,7 @@ chmod [OPTION] MODE FILE...
 ## *Hard Link* vs *SymLink*
 
 1. *Hard link*
-    - mengacu ke nomor indeks *file* (inode)
+    - mengacu ke id *file* (inode)
     - perubahan nama *file* tidak berpengaruh
     - hanya bisa dalam satu partisi
 2. *Symbolic link*
@@ -118,12 +120,13 @@ ln [OPTION] TARGET LINK-NAME
 
 ![Inode](img/inodes.png)
 
+<!--
 ---
 
 ![Direktori dan symlink](img/directories.png)
+-->
 
-
-# Stream
+# File Stream
 
 ## *Stream* Standar
 
@@ -183,9 +186,11 @@ stdin  ---> |   PROSES   | --->  stdout
 
 ---
 
+<!--
 ![File descriptor](img/file-descriptors.png)
 
 ---
+-->
 
 ![Pipe](img/pipes.png)
 

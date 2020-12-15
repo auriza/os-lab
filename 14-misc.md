@@ -2,21 +2,22 @@
 title: Perintah Tambahan
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2018
+date: 2019
 theme: Dresden
+linkcolor: .
 header-includes:
-    - \usepackage{fontspec}
-    - \usepackage{polyglossia}
-    - \setmainlanguage{english}
-    - \setotherlanguage{arabic}
-    - \newfontfamily\arabicfontsf[Script=Arabic]{Amiri}
+- \usepackage{fontspec}
+- \usepackage{polyglossia}
+- \setmainlanguage{english}
+- \setotherlanguage{arabic}
+- \newfontfamily\arabicfontsf[Script=Arabic]{Amiri}
 ---
 
 
-# Kompresi File
+# Kompresi *File*
 
 ## `tar`
-Menggabung beberapa *file* ke dalam satu *file* arsip (**_t_**_ape_ **_ar_**_chive_).
+Menggabung beberapa *file* ke dalam satu *file* arsip (_**t**ape **ar**chive_).
 ```sh
 tar [OPTION] [FILE...]
 ```
@@ -87,7 +88,7 @@ unzip ARCHIVE [-d DIR]
 - `-d`: *directory*; ekstrak ke direktori berikut
 
 
-# Konversi File
+# Konversi *File*
 
 ## `convert`
 Konversi citra: format, ukuran, efek, dan sebagainya.
@@ -124,11 +125,21 @@ ffmpeg -i INFILE [OPTION] OUTFILE
 ```
 - `-b`: *bitrate*
 - `-c`: *codec*
-- `-f`: *frame rate*
-- `-s`: *frame size*
 - `-ss`: *seek start*; waktu awal
 - `-to`: waktu akhir
 
+---
+
+```sh
+# cut video from 2:00 to 4:00
+ffmpeg -i IN.mp4 -c copy -ss 2:00 -to 4:00 OUT.mp4
+
+# extract audio from video (MP4 -> M4A)
+ffmpeg -i IN.mp4 -vn -c:a copy OUT.m4a
+
+# extract audio from video (MP4 -> MP3)
+ffmpeg -i IN.mp4 -c:a mp3 OUT.mp3
+```
 
 ## `pandoc`
 Konversi Markdown ke format lain (HTML, LaTeX, PDF).
@@ -335,5 +346,18 @@ Menampilkan info sensor.
 sensors
 ```
 
+# Tugas
 
-# \textarabic{شكرا}
+## CommandLine-Fu
+
+- Tuliskan salah satu perintah *command line* yang menurut anda paling bermanfaat atau keren atau apapun itu ke <https://commandlinefu.com>
+- Kirim *link*-nya ke <https://forms.gle/6Lt9Va8VPh9VjLwL9>
+- Berikan *upvote* ke *link* teman kalian jika kalian suka
+    - daftar: <https://docs.google.com/spreadsheets/d/17PbdgwMnEn4elp7_sCI3EwtbC8wCzh0xtboCRsd0EK0/edit?usp=sharing>
+
+## Terima Kasih
+
+\Huge
+\centering
+
+\textarabic{شكرا}

@@ -331,6 +331,5 @@ Untuk informasi dan latihan lebih lanjut, *lihat* <http://regexr.com>.
 
 ## Tugas
 
-UNIX Text Processing Contest 2019^[<https://www.hackerrank.com/unix-text-processing-2019>]
+Kerjakan latihan Linux Shell bagian Text Processing ^[<https://www.hackerrank.com/domains/shell/textpro>]
 
-Nilai maksimum: **120**
