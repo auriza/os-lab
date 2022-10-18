@@ -27,12 +27,42 @@ theme: Dresden
 ## UNIX Shell
 
 - Lihat **Project 1**[^04-shell], kerjakan **Part I**, yaitu membuat *shell*
-    - lengkapi contoh program berikut[^04-shc]
+    - templat program: <https://git.io/vycRv>
 - Kumpulkan di LMS dengan nama *file* `[NIM].c`
-    - paling lambat setelah praktikum berakhir
 
 [^04-shell]: Silberschatz *et al.* (2013), *Operating System Concepts*, hlm 157--159
-[^04-shc]: <https://git.io/vycRv>
+
+<!--
+- Tugas kelompok 4 orang
+- Presentasi pekan depan
+    - penjelasan kode program
+    - demo uji coba program
+-->
+
+## Testcase
+
+```
+ps
+dat
+date
+ps
+uname -v
+cd /
+pwd
+ls
+exit
+```
+
+## Penilaian
+
+Nilai akan dikurangi jika:
+
+- ada zombie process
+- parameter perintah tidak berfungsi
+- tidak ada fitur `cd`
+- tidak ada fitur `exit`
+
+<!--
 
 ## UNIX Shell: Fitur History (Bonus)
 
@@ -41,3 +71,4 @@ theme: Dresden
     - plagiasi akan mendapat sanksi nilai $-100$
 - Kumpulkan di LMS dengan nama *file* `[NIM].c`
     - paling lambat besok pukul 22:00
+-->

@@ -2,7 +2,7 @@
 title: File dan Direktori
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2019
+date: 2022
 theme: Dresden
 ---
 
@@ -39,10 +39,10 @@ ls [OPTION] [FILE]
 
 ## `touch`
 Meng-*update* waktu akses dan modifikasi suatu `FILE`.
+Jika `FILE` belum ada, maka `touch` akan membuat `FILE` kosong.
 ```bash
 touch FILE
 ```
-Jika `FILE` belum ada, maka `touch` akan membuat `FILE` kosong.
 
 ## `mkdir`
 Membuat direktori.
@@ -124,22 +124,16 @@ ditulis relatif terhadap posisi saat ini; contoh: '`../etc`'
 
 ## Latihan
 
-- Launch School - Intro Command Line
-
-    <https://launchschool.com/books/command_line/read/files_directories_executables#managingfiles>
+- [Launch School - Intro Command Line](https://launchschool.com/books/command_line/read/files_directories_executables#managingfiles)
 
 # Tugas
 
 ## Tugas
 
-- Webroot
-    - login ke server SO: <http://os.apps.cs.ipb.ac.id/sh>
-    - buat direktori `public_html`
-- Templat
-    - masuk ke direktori tersebut
-    - salin *file* `/home/auriza/index.html` ke sini
-- Edit
-    - edit *file* dengan `editor` sesuai dengan data diri anda
-    - hasilnya bisa dilihat pada laman:
-        - <http://os.apps.cs.ipb.ac.id/~$USER>
-        - <http://os.apps.cs.ipb.ac.id/~auriza>
+- login ke server `172.18.14.15`
+- buat direktori `public_html` di *home* anda
+- buat *file* baru `index.html` di direktori tsb
+- edit *file*, tuliskan NIM dan nama anda
+- hasilnya bisa dilihat pada laman:
+    - <http://172.18.14.15/~$USER>
+    - <http://s1.apps.cs.ipb.ac.id/~$USER>

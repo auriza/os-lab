@@ -2,7 +2,7 @@
 title: UNIX Command Line
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2019
+date: 2022
 theme: Dresden
 header-includes:
     - \renewcommand{\figurename}{Gambar}
@@ -23,8 +23,12 @@ header-includes:
 
 ## Server SO
 
-- Alamat: <http://so.apps.cs.ipb.ac.id/sh>
-    - *login*: lihat LMS
+- Alamat:
+    - `172.18.14.15`
+    - <http://s1.apps.cs.ipb.ac.id/sh>
+- *Login*:
+    - username: NIM (huruf kecil)
+    - password: 3 digit terakhir NIM
 
 <!--
 - Raspberry Pi 3 Model B[^08-rpi3]
@@ -132,6 +136,20 @@ Mengganti *password* login.
 ```bash
 passwd
 ```
+
+## `adduser`
+Menambah *user* baru, atau menambahkan *user* ke grup tertentu.
+```bash
+sudo adduser USER
+sudo adduser USER GROUP
+```
+
+## `deluser`
+Menghapus *user* dari sistem.
+```bash
+sudo deluser USER
+```
+- `--remove-home`: hapus direktori *home*
 
 ## `logout`
 Keluar dari sistem.
@@ -264,7 +282,7 @@ menghapus satu kata ke belakang
 - CommandLineFu[^08-cfu]
 
 [^08-cmd]: <https://en.wikipedia.org/wiki/Template:Unix_commands>
-[^08-esh]: <http://explainshell.com>
+[^08-esh]: <https://explainshell.com>
 [^08-cfu]: <https://www.commandlinefu.com>
 
 # Tugas
@@ -273,4 +291,3 @@ menghapus satu kata ke belakang
 
 Kirim surat ke *user* `auriza`.
 
-<!-- TODO: add user mgmt: adduser, deluser, addgroup, etc. -->
