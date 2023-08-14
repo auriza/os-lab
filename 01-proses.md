@@ -2,7 +2,7 @@
 title: Proses
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2019
+date: 2023
 theme: Dresden
 header-includes:
     - \usepackage{tikz}
@@ -13,8 +13,7 @@ header-includes:
 
 ## Peraturan
 
-- Pakaian sopan, tidak ketat
-    - pelanggaran 3 kali: sanksi sedang
+- Pakaian sopan
 - Kehadiran minimal 80%
 - Toleransi keterlambatan 20 menit
 - Tidak membawa makanan ke lab
@@ -25,14 +24,13 @@ header-includes:
 
 ## LMS
 
-- <https://newlms.ipb.ac.id/course/view.php?id=506>
-    - *key*: `soganjil19`
+- <https://class.ipb.ac.id>
 - Buku acuan:
-    - Silberschatz *et al.* 2013. *Operating System Concepts*. Ed ke-9.
-- Proporsi nilai praktikum (25%):
-    - UTSP: 10%
-    - UASP: 10%
-    - Tugas: 5%
+    - Silberschatz *et al.* 2018. *Operating System Concepts*. Ed ke-10.
+- Proporsi nilai praktikum (30%):
+    - UTSP: 5%
+    - UASP: 5%
+    - Tugas: 20%
 
 
 # Proses
@@ -45,7 +43,7 @@ Program yang sedang berjalan.
 
 > A program in execution.[^01-process]
 
-[^01-process]: Silberschatz *et al.* (2013), *Operating System Concepts*, hlm 105.
+[^01-process]: Silberschatz *et al.* (2018), *Operating System Concepts*, hlm 106.
 
 ## Bagaimana cara menjalankan program?
 
@@ -58,7 +56,7 @@ Misalkan kita ingin menjalankan program Firefox. Ada berapa cara?
 Dua cara:
 
 1. **CLI**: buka *shell*, lalu ketikkan perintah `firefox`.
-2. **GUI**: klik ikon Firefox pada menu aplikasi.
+2. **GUI**: klik ikon Firefox pada menu aplikasi.[^01-ff]
 
 [^01-ff]: jika ikon diklik, program akan tetap dijalankan melalui *shell*; coba cek isi *file* `/usr/share/applications/firefox.desktop`.
 
@@ -118,7 +116,7 @@ Dua cara:
 
 ## Bagaimana *shell* bisa membuat proses?
 
-**Tugas**: baca Silberschatz *et al.* (2013), hlm 116--118 sebagai tugas sekaligus materi praktikum pekan depan.
+**Tugas**: baca Silberschatz *et al.* (2013), hlm 116--119 untuk materi dan tugas praktikum berikutnya.
 
 
 ## Manajemen Proses
