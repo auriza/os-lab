@@ -2,7 +2,7 @@
 title: Fork, Wait
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2019
+date: 2023
 theme: Dresden
 ---
 
@@ -232,8 +232,11 @@ int main()
 }
 ~~~
 
-## Latihan Buku
+## Tugas
 
+- Kerjakan kuis di LMS (diambil dari soal latihan di buku Bab 3)
+
+<!--
 - Kerjakan latihan (buku hlm 149--153) nomor:
     - 3.1
     - 3.2
@@ -245,5 +248,5 @@ int main()
 
 - Kerjakan tanpa bantuan komputer terlebih dahulu, lalu cek jawaban anda dengan
     menjalankan kode program yang diberikan.
-
+-->
 
