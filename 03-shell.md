@@ -2,7 +2,7 @@
 title: UNIX Shell
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2019
+date: 2023
 theme: Dresden
 ---
 
@@ -28,9 +28,10 @@ theme: Dresden
 
 - Lihat **Project 1**[^04-shell], kerjakan **Part I**, yaitu membuat *shell*
     - templat program: <https://git.io/vycRv>
-- Kumpulkan di LMS dengan nama *file* `[NIM].c`
+- Penilaian langsung di tempat oleh asisten praktikum
+- Kumpulkan hasil akhirnya di LMS dengan nama *file* `[NIM].c`
 
-[^04-shell]: Silberschatz *et al.* (2013), *Operating System Concepts*, hlm 157--159
+[^04-shell]: Silberschatz *et al.* (2018), *Operating System Concepts*, hlm P12--15
 
 <!--
 - Tugas kelompok 4 orang
@@ -41,21 +42,28 @@ theme: Dresden
 
 ## Testcase
 
+Testcase terdiri atas 6 perintah berikut. Jalankan dan bandingkan dengan contoh keluaran berikut.
+
 ```
-ps
 dat
 date
-ps
-uname -v
+ps --forest
 cd /
-pwd
 ls
 exit
 ```
 
 ## Penilaian
 
-Nilai akan dikurangi jika:
+![](img/shell-test.png){width=70%}
+
+Nilai akan dikurangi `-10` untuk tiap keluaran perintah yang berbeda dengan contoh di atas.
+
+**Catatan**: nilai PID dan waktu akan bervariasi sesuai kondisi.
+
+## Debugging
+
+Penyebab kesalahan karena:
 
 - ada zombie process
 - parameter perintah tidak berfungsi
