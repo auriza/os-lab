@@ -2,7 +2,7 @@
 title: Signal
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2019
+date: 2023
 theme: Dresden
 header-includes:
     - \renewcommand{\figurename}{Gambar}
@@ -30,7 +30,7 @@ header-includes:
 
 - Berikut sinyal yang dapat dikirim oleh *user* ke proses:
     - `Ctrl-C`: sinyal *interrupt* (`SIGINT`)
-    - `Ctrl-Z`: sinyal *terminal stop* (`SIGTSTP`)
+    - `Ctrl-Z`: sinyal *stop* (`SIGTSTP`), bisa dilanjutkan lagi
     - `Ctrl-\`: sinyal *quit* (`SIGQUIT`)
 
 [^03-signum]: lihat *file* `/usr/include/bits/signum-generic.h`.
@@ -66,7 +66,7 @@ header-includes:
 #define SIGCHLD     17  // child terminated/stopped
 #define SIGCONT     18  // continue
 #define SIGSTOP     19  // stop, unblockable
-#define SIGTSTP     20  // keyboard stop
+#define SIGTSTP     20  // terminal stop
 #define SIGTTIN     21  // background read from tty
 #define SIGTTOU     22  // background write to tty
 #define SIGURG      23  // urgent data on socket
@@ -208,13 +208,13 @@ int main()
 
 ## Kirim Sinyal
 
-- Modifikasi program contoh (hlm \ref{kill}) pada bagian *parent*, sehingga *child* akan:
+- Modifikasi program contoh (p\ref{kill}) pada bagian *parent*, sehingga *child* akan:
     - berjalan selama 4 detik, lalu
     - berhenti sementara selama 3 detik, lalu
     - lanjut lagi berjalan selama 2 detik, lalu
-    - berhenti
-- Jika benar, *child* akan mencetak 4 kali, jeda, dan 2 kali.
-    - tunjukkan ke asprak untuk dinilai
+    - selesai
+- Tunjukkan ke asprak untuk dinilai
+- Kumpulkan hasil akhirnya ke LMS (*file* `[NIM].c`)
 
 <!--
 
