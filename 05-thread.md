@@ -2,7 +2,7 @@
 title: Thread
 author: Praktikum Sistem Operasi
 institute: Ilmu Komputer IPB
-date: 2019
+date: 2023
 theme: Dresden
 header-includes:
     - \renewcommand{\figurename}{Gambar}
@@ -140,7 +140,8 @@ void* hello(void* arg) {
 
 int main() {
     pthread_t t;
-    pthread_create(&t, NULL, hello, &(int){42});
+    int id[] = {1};
+    pthread_create(&t, NULL, hello, &id[0]);
     pthread_join(t, NULL);
     return 0;
 }
@@ -153,7 +154,7 @@ int main() {
 
 int main() {
     pthread_t t1, t2;
-    int id[] = {10, 20};
+    int id[] = {1, 2};
 
     pthread_create(&t1, NULL, hello, &id[0]);
     pthread_create(&t2, NULL, hello, &id[1]);
@@ -172,7 +173,7 @@ int main() {
 
 int main() {
     pthread_t t[N];
-    int id[N] = {0, 1, 2, 3, 4, 5, 6, 7};
+    int id[N] = {1, 2, 3, 4, 5, 6, 7, 8};
 
     for (int i = 0; i < N; i++)
         pthread_create(&t[i], NULL, hello, &id[i]);
