@@ -28,7 +28,7 @@ header-includes:
     - <http://s1.apps.cs.ipb.ac.id/sh>
 - *Login*:
     - username: NIM (huruf kecil)
-    - password: 3 digit terakhir NIM
+    - password: 6 digit terakhir NIM
 
 <!--
 - Raspberry Pi 3 Model B[^08-rpi3]
