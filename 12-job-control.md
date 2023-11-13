@@ -68,10 +68,19 @@ Mendapatkan PID dari nama program yang sedang berjalan.
 pidof PROGRAM
 ```
 
+## `pgrep`
+Mendapatkan PID dari nama program yang sedang berjalan.
+```bash
+pgrep [OPTION] PROGRAM...
+```
+- `-u USER`: pilih proses milik *USER*
+- `-g GROUP`: pilih proses milik *GROUP*
+- `-l`: tampilkan nama proses
+
 ## `kill`
 Mengirim sinyal ke proses (*default*: `SIGTERM`).
 ```bash
-kill [-SIG] PID...
+kill [OPTION] PID...
 ```
 - `-INT`
 - `-KILL`
@@ -81,18 +90,23 @@ kill [-SIG] PID...
 ## `pkill`
 Mengirim sinyal ke proses (*default*: `SIGTERM`) berdasarkan namanya.
 ```bash
-pkill [-SIG] [-u user] PROCESSNAME...
+pkill [OPTION] PROGRAM...
 ```
 - `-INT`
 - `-KILL`
 - `-STOP`
 - `-CONT`
+- `-u USER`: pilih proses milik *USER*
+- `-g GROUP`: pilih proses milik *GROUP*
+
 
 ## `pmap`
 Menampilkan *memory map* sebuah proses.
 ```bash
-pmap PID
+pmap [OPTION] PID
 ```
+- `-x`: tampilkan format *extended*
+- `-p`: tampilkan *path* lengkap *file*
 
 ## `lsof`
 Menampilkan daftar *file* yang sedang dibuka oleh proses.
@@ -135,6 +149,16 @@ prlimit [OPTION] COMMAND
 - `-s`: *stack*; ukuran *stack* (byte)
 - `-v`: *virtual memory*; ukuran memori (byte)
 - `-n`: *number of open files*
+
+## `objdump`
+Menampilkan informasi dari file program.
+```bash
+objdump [OPTION] FILE
+```
+- `-d`: *disassemble* bagian text program
+- `-D`: *dissasseble* semua bagian program
+- `-M intel`: mode sintaks Intel
+
 
 ---
 
