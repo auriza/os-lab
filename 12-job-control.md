@@ -128,12 +128,6 @@ Mengubah prioritas proses yang sudah berjalan.
 renice [-n] NICE PID
 ```
 
-## `time`
-Menjalankan program dan menampilkan penggunaan waktu CPU.
-```bash
-time COMMAND
-```
-
 ## `timeout`
 Menjalankan program dengan batasan waktu tertentu.
 ```bash
@@ -150,13 +144,32 @@ prlimit [OPTION] COMMAND
 - `-v`: *virtual memory*; ukuran memori (byte)
 - `-n`: *number of open files*
 
+## `time`
+Menjalankan program dan menampilkan penggunaan waktu CPU.
+```bash
+/usr/bin/time [OPTION] COMMAND
+```
+- `-p`: *portable*; format standar POSIX
+- `-v`: *verbose*; format lengkap
+
+## `strace`
+Menelusuri *system call* dan sinyal proses.
+```bash
+strace [OPTION] COMMAND
+```
+- `-c`: *count*; tampilkan ringkasan
+- `-f`: *fork*; telusuri juga proses *child*
+- `-t`: *time*; tampilkan waktu, gunakan `-tt` untuk mikrodetik
+- `-e SET`: telusuri *syscall* tertentu saja
+    - `SET`: `file`, `process`, `network`, `signal`, `ipc`, `desc`, `memory`
+
 ## `objdump`
-Menampilkan informasi dari file program.
+Menampilkan informasi dari file objek.
 ```bash
 objdump [OPTION] FILE
 ```
-- `-d`: *disassemble* bagian text program
-- `-D`: *dissasseble* semua bagian program
+- `-d`: *disassemble* segmen text
+- `-D`: *dissasseble* semua segmen
 - `-M intel`: mode sintaks Intel
 
 
