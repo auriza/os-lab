@@ -294,7 +294,7 @@ at HH:MM [YYYY-MM-DD]
 ---
 
 ```bash
-# jalankan `cat /dev/random > rand.txt` di background
+# jalankan `while true; do date >> a.txt; sleep 1; done` di background
 ...
 # tampilkan daftar job
 ...
