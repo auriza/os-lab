@@ -27,10 +27,10 @@ header-includes:
 - <https://class.ipb.ac.id>
 - Buku acuan:
     - Silberschatz *et al.* 2018. *Operating System Concepts*. Ed ke-10.
-- Proporsi nilai praktikum (30%):
-    - UTSP: 5%
-    - UASP: 5%
-    - Tugas: 20%
+- Proporsi nilai praktikum:
+    - UTSP: 25%
+    - UASP: 25%
+    - Tugas: 50%
 
 
 # Proses

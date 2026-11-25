@@ -91,8 +91,30 @@ Menampilkan isi direktori dalam format *tree*.
 ```bash
 tree [OPTION] [DIR...]
 ```
-- `-L N`: level kedalaman direktori
+- `-L N`: level kedalaman direktori maksimal
+- `-d`: *directory*; tampilkan direktori saja
+- `-h`: *human-readable*; tampilkan ukuran *file*
+
+## `du`
+Menampilkan estimasi penggunaan ruang penyimpanan secara rekursif.
+```bash
+du [OPTION] [DIRECTORY]
+```
+- `-d N`: *depth*; kedalaman direktori maksimal
 - `-h`: *human-readable*; format ukuran
+- `-s`: *summary*; tampilkan ukuran totalnya saja
+
+
+## `df`
+Menampilkan ruang penyimpanan yang masih tersedia.
+```bash
+df [OPTION] [FILE...]
+```
+- `-h`: *human-readable*; format ukuran kelipatan 1024
+- `-i`: *inode*; tampilkan informasi inode
+- `-T`: *type*; tampilkan jenis *filesystem*
+
+lsblk
 
 ## *Dotfile*
 

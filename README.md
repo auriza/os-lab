@@ -16,7 +16,7 @@
 9. [File](09-file.md), [permission, link, pipe, redirection](10-permission-pipe.md)
 10. [Pemrosesan teks](11-text-process.md)
 11. [Pemrosesan teks: latihan](https://unixgame.io/unix50)
-12. [Job control](12-job-control.md)
+12. [Proses dan job](12-job-control.md)
 13. [Shell script](13-shell-script.md)
 14. UASP
 

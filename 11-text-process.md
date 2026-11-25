@@ -16,6 +16,7 @@ Menampilkan manual suatu program, fungsi, dan lain-lain.
 ```bash
 man [SECTION] PAGE
 ```
+- `-k KEYWORD`: mencari manual berdasarkan kata kunci
 - `q`: *quit*; keluar
 - `/`: pencarian kata
     - `n`: *next*; lanjutkan pencarian kata
